@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: archives-server
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+         ip: 172.21.4.62
+#          server-addr: localhost:8848
+#         server-addr: 172.21.4.62:8848
+      server-addr: 172.17.0.1:8848
+  datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+#        url: jdbc:mysql://localhost:3306/file_manage?serverTimezone=GMT%2B8
+#        url: jdbc:mysql://172.21.4.62:3306/file_manage?serverTimezone=GMT%2B8
+        url: jdbc:mysql://172.17.0.1:3306/file_manage?serverTimezone=GMT%2B8
+        username: root
+        password: root
+  #文件上传路径
+  servlet:
+    multipart:
+#      location: F:/resources/upload/
+      max-file-size: 100MB
+  aop:
+    auto: true
+file:
+  server:
+    # windows本地磁盘路径
+    uploadFolder: F:/resources/upload/
+    #服务虚拟路径
+    uploadVirtual: /resources/upload/
+    #Linux磁盘路径
+    linuxFolder: user/resources/upload/
+
+#jodconverter:
+#  local:
+#    enabled: true
+#    office-home: C:\Program Files (x86)\OpenOffice 4
+#    max-tasks-per-process: 10
+#    port-numbers: 8100
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+server:
+#  port: 8015
+  port: 8015
+  servlet:
+    context-path: /archives/
+logging:
+  level:
+    com.nantian: debug
+

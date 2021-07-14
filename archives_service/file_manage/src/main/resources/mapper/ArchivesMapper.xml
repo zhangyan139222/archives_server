@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nantian.archives.mapper.ArchivesMapper">
+
+    <select id="getArchivesListByUser" resultType="com.natian.entity.archives.Archives">
+    select   d.KEYWORD AS archivalCode, d.F1  AS fileNo, d.F2  AS inVolumeNumber ,d.HH  AS boxNumber,
+d.JH AS partNumber,d.TITLE  as title,d.FLH  AS  classNumber,d.FLNAME  AS className,d.ZRZ  AS  responsiblePerson,
+d.YS  AS pageAmount,d.CWRQ  AS origDocumentDate,d.GDFS  AS archivalNumber, d.GDRQ  AS archivalTime,d.MJ  AS secretDegree,
+d.BGQX AS storagePeriod,d.ZTC  AS themeWord,d.ND  AS timeYear,d.BZ  AS remarks,d.ZBR  AS reorganizer,
+d.GDR  AS fillingPerson,d.ZBRQ  AS reorganizerDate,d.QZH  AS generalArchivalNumber,d.OWNERVOL  AS volumesNo,
+d.F3  AS documentNumber,d.F6  AS fileNumber,d.F9  AS carrierType,d.F12  AS manuscript,d.F14  AS controlSign,d.F15 AS catalogNumber,
+d.F16  AS fileName,d.F4  AS startPage,d.F7 AS endPage,d.F8  AS documentDate ,d.F11  AS dateRemarks,d.F5  AS origFileNo ,
+d.F10  AS origInVolumeNumber,d.F13 AS originalDocumentNumber,d.F17  AS origPageAmount,d.audit_status  AS auditStatus,
+d.audit_time  AS auditTime
+from(
+SELECT * FROM d_file366 a where a.id in(select b.file_id from d_user_file b where b.user_id=#{userId} and b.audit_status=1
+    and b.end_time>=now()) union select * from d_file366 c where c.ZRZ=#{userId} and c.audit_status=1 )d
+    <where>
+        <if test="classNumber!=null and classNumber!=''">
+              and d.FLH like CONCAT('%',#{classNumber},'%')
+        </if>
+        <if test="title!=null and title!=''">
+            and d.TITLE  like  CONCAT('%',#{title},'%')
+        </if>
+        <if test="catalogNumber!=null and catalogNumber!=''">
+            and d.F15  like CONCAT('%',#{catalogNumber},'%')
+        </if>
+        <if test="responsiblePerson!=null and responsiblePerson!=''">
+            and d.ZRZ like  CONCAT('%',#{responsiblePerson},'%')
+        </if>
+    </where>
+    </select>
+
+
+    <select id="getArchivesDetail" resultType="com.natian.entity.archives.Archives">
+     select   a.QZH  AS generalArchivalNumber,a.F15  AS catalogNumbera,a.F1  AS fileNo,a.KEYWORD  AS archivalCode,ZRZ  AS responsiblePerson,
+     a.TITLE  AS title
+       from  d_file366    a
+
+    </select>
+</mapper>

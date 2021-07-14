@@ -1,0 +1,60 @@
+Manifest-Version: 1.0
+Main-Class: com.nantian.ArchaivesManageApplication
+Class-Path: snakeyaml-1.26.jar springfox-swagger-ui-2.9.2.jar jakarta.va
+ lidation-api-2.0.2.jar jackson-datatype-jdk8-2.11.3.jar jersey-core-1.1
+ 9.1.jar spring-security-rsa-1.0.9.RELEASE.jar knife4j-spring-2.0.7.jar 
+ ribbon-transport-2.3.0.jar spring-cloud-starter-netflix-archaius-2.2.2.
+ RELEASE.jar spring-jdbc-5.2.10.RELEASE.jar jersey-client-1.19.1.jar spr
+ ing-boot-starter-jdbc-2.3.5.RELEASE.jar spring-cloud-netflix-archaius-2
+ .2.2.RELEASE.jar spring-boot-autoconfigure-2.3.5.RELEASE.jar nacos-clie
+ nt-1.2.1.jar HikariCP-3.4.5.jar spring-plugin-core-1.2.0.RELEASE.jar ht
+ tpclient-4.5.13.jar spring-plugin-metadata-1.2.0.RELEASE.jar mapstruct-
+ 1.2.0.Final.jar log4j-api-2.13.3.jar spring-cloud-starter-alibaba-nacos
+ -config-2.2.1.RELEASE.jar mybatis-3.5.6.jar jackson-databind-2.11.3.jar
+  knife4j-annotations-2.0.7.jar bcpkix-jdk15on-1.64.jar jakarta.annotati
+ on-api-1.3.5.jar spring-boot-starter-validation-2.3.5.RELEASE.jar mybat
+ is-plus-annotation-3.4.2.jar servo-internal-0.10.1.jar hibernate-valida
+ tor-6.1.6.Final.jar commons-fileupload-1.4.jar bcprov-jdk15on-1.64.jar 
+ jodconverter-spring-boot-starter-4.2.2.jar log4j-to-slf4j-2.13.3.jar ju
+ l-to-slf4j-1.7.30.jar guava-20.0.jar spring-tx-5.2.10.RELEASE.jar sprin
+ g-beans-5.2.10.RELEASE.jar springfox-bean-validators-2.10.5.jar aspectj
+ weaver-1.9.6.jar jackson-core-2.11.3.jar spring-cloud-openfeign-core-3.
+ 0.0.jar rxnetty-servo-0.4.9.jar springfox-core-2.9.2.jar mybatis-plus-3
+ .4.2.jar commons-collections-3.2.2.jar tomcat-embed-core-9.0.39.jar kni
+ fe4j-spring-boot-autoconfigure-2.0.7.jar spring-cloud-commons-3.0.0.jar
+  byte-buddy-1.10.17.jar commons-lang3-3.10.jar netflix-commons-util-0.1
+ .1.jar jackson-module-parameter-names-2.11.3.jar jboss-logging-3.4.1.Fi
+ nal.jar jackson-annotations-2.11.3.jar jersey-apache-client4-1.19.1.jar
+  jsr305-3.0.1.jar commons-configuration-1.8.jar swagger-annotations-1.5
+ .22.jar jodconverter-core-4.2.2.jar spring-context-support-1.0.6.jar sp
+ ring-webmvc-5.2.10.RELEASE.jar mybatis-plus-extension-3.4.2.jar spring-
+ cloud-starter-alibaba-nacos-discovery-2.2.1.RELEASE.jar spring-boot-2.3
+ .5.RELEASE.jar spring-context-5.2.10.RELEASE.jar httpcore-4.4.13.jar ne
+ tflix-statistics-0.1.1.jar mysql-connector-java-8.0.22.jar knife4j-spri
+ ng-boot-starter-2.0.7.jar mybatis-spring-2.0.5.jar rxnetty-0.4.9.jar fe
+ ign-form-3.8.0.jar spring-core-5.2.10.RELEASE.jar servo-core-0.10.1.jar
+  knife4j-spring-ui-2.0.7.jar ribbon-httpclient-2.3.0.jar springfox-spi-
+ 2.9.2.jar javax.inject-1.jar logback-classic-1.2.3.jar feign-slf4j-10.1
+ 0.1.jar ribbon-core-2.3.0.jar mybatis-plus-boot-starter-3.4.2.jar sprin
+ g-cloud-netflix-ribbon-2.2.2.RELEASE.jar mybatis-plus-core-3.4.2.jar co
+ mmons-io-2.6.jar spring-cloud-starter-3.0.0.jar jakarta.el-3.0.3.jar sp
+ ring-boot-starter-aop-2.3.5.RELEASE.jar spring-cloud-context-2.2.2.RELE
+ ASE.jar gson-2.8.6.jar springfox-swagger2-2.9.2.jar spring-jcl-5.2.10.R
+ ELEASE.jar springfox-spring-web-2.9.2.jar logback-core-1.2.3.jar slf4j-
+ api-1.7.30.jar commons-lang-2.6.jar springfox-schema-2.9.2.jar classmat
+ e-1.5.1.jar springfox-swagger-common-2.9.2.jar spring-security-crypto-5
+ .3.5.RELEASE.jar javassist-3.25.0-GA.jar rxjava-1.3.8.jar feign-core-10
+ .10.1.jar knife4j-core-2.0.7.jar tomcat-embed-websocket-9.0.39.jar spri
+ ngfox-spring-webmvc-2.10.5.jar spring-boot-starter-tomcat-2.3.5.RELEASE
+ .jar nacos-api-1.2.1.jar spring-boot-starter-2.3.5.RELEASE.jar spring-b
+ oot-starter-web-2.3.5.RELEASE.jar ribbon-2.3.0.jar spring-boot-starter-
+ logging-2.3.5.RELEASE.jar archaius-core-0.7.6.jar simpleclient-0.5.0.ja
+ r commons-codec-1.14.jar jsr311-api-1.1.1.jar jackson-datatype-jsr310-2
+ .11.3.jar jsqlparser-4.0.jar hystrix-core-1.4.3.jar nacos-common-1.2.1.
+ jar spring-aop-5.2.10.RELEASE.jar rxnetty-contexts-0.4.9.jar spring-clo
+ ud-starter-netflix-ribbon-2.2.2.RELEASE.jar spring-web-5.2.10.RELEASE.j
+ ar fastjson-1.2.58.jar ribbon-loadbalancer-2.3.0.jar swagger-models-1.5
+ .22.jar feign-form-spring-3.8.0.jar spring-cloud-starter-openfeign-3.0.
+ 0.jar spring-expression-5.2.10.RELEASE.jar spring-boot-starter-json-2.3
+ .5.RELEASE.jar
+

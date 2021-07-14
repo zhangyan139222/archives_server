@@ -1,0 +1,4 @@
+# Project exclude paths
+/archives_service/file_manage/target/
+/common/target/
+/out/

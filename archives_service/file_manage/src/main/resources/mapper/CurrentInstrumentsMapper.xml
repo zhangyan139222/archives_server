@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nantian.archives.mapper.CurrentInstrumentsMapper">
+    <select id="getAllListOfPageByUser"  resultType="com.natian.entity.archives.CurrentInstrument">
+        select  b.id  AS id,b.archival_code AS archivalCode,b.original_number  AS originalNumber,
+        b.part_number AS partNumber,b.captions AS captions, b.parent_title AS ParentTitle,
+        b.parallel_topics AS parallelTopics,b.title AS title,b.document_class_level AS documentClassLevel,
+        b.document_class_name AS documentClassName,b.responsible_person AS responsiblePerson,b.page_number AS pageNumber,
+        b.page_amount  AS pageAmount,b.original_time AS originalTime,b.archival_number AS archivalNumber,
+        b.archival_time AS archivalTime,b.secrecy_term AS secrecyTerm,b.copy_delivery AS copyDelivery,
+        b.main_delivery AS mainDelivery,b.urgency_degree AS urgencyDegree,b.secret_degree AS secretDegree,
+        b.storage_period AS storagePeriod,b.summary AS summary,b.keywords AS keywords,b.theme_word  AS themeWord,
+        b.time_year AS timeYear,b.remarks AS remarks,b.off_line_address AS offLineAddress,b.off_line_number AS offLineNumber,
+        b.storage_address AS storageAddress,b.manuscript AS manuscript,b.reorganizer AS reorganizer,b.filling_person AS fillingPerson,
+        b.reorganize_time AS reorganizeTime,b.general_archival_number AS generalArchivalNumber,b.general_archival_name AS generalArchivalName,
+        b.institutional_issues AS institutionalIssues,b.document_number AS documentNumber,b.attachament_title AS attachamentTitle,
+        b.name_index AS nameIndex,b.box_number AS boxNumber,b.datetime AS datetime,b.timeremarks AS timeremarks,
+        b.original_file_number AS originalFileNumber,b.original_file_page AS originalFilePage,b.audit_status AS auditStatus,
+        b.audit_time AS auditTime,b.file_url AS fileUrl,b.user_id   AS userId,b.is_e_file AS isEFile ,b.update_time AS updateTime from(
+        SELECT * FROM d_file_current_instruments a where a.id in(select dufp.file_id from d_user_file_permission dufp where dufp.user_id=#{uesrId} and dufp.audit_status=1
+        and dufp.end_time>=now()) union select * from d_file_current_instruments c where c.user_id=#{uesrId}) b
+        <where>
+           <if test="applyUser!=null and applyUser!=''">
+                and b.responsible_person like  CONCAT('%',#{applyUser},'%')
+            </if>
+            <!--  <if test="timeYear!=null and timeYear!=''">
+                 and b.time_year  like CONCAT('%',#{timeYear},'%')
+             </if>
+             <if test="archivalCode!=null and archivalCode!=''">
+                 and b.archival_code like CONCAT('%',#{archivalCode},'%')
+             </if>
+             <if test="storagePeriod!=null and storagePeriod!=''">
+                 and b.storage_period like CONCAT('%',#{storagePeriod},'%')
+             </if>
+             <if test="boxNumber!=null and boxNumber!=''">
+                 and b.box_number  like CONCAT('%',#{boxNumber},'%')
+             </if>-->
+            <if test="documentClassLevel!=null and documentClassLevel!=''">
+                and b.document_class_level= #{documentClassLevel}
+            </if>
+            <if test="auditStatus!=null and auditStatus!=''">
+            and b.audit_status=#{auditStatus}
+            </if>
+            <if test="title!=null and title!=''">
+                and b.title=#{title}
+            </if>
+        </where>
+         order by  b.create_time  desc
+
+    </select>
+
+
+
+    <select id="getAllListOfPageByAdmin"  resultType="com.natian.entity.archives.CurrentInstrument">
+        select  b.id  AS id,b.archival_code AS archivalCode,b.original_number  AS originalNumber,
+        b.part_number AS partNumber,b.captions AS captions, b.parent_title AS ParentTitle,
+        b.parallel_topics AS parallelTopics,b.title AS title,b.document_class_level AS documentClassLevel,
+        b.document_class_name AS documentClassName,b.responsible_person AS responsiblePerson,b.page_number AS pageNumber,
+        b.page_amount  AS pageAmount,b.original_time AS originalTime,b.archival_number AS archivalNumber,
+        b.archival_time AS archivalTime,b.secrecy_term AS secrecyTerm,b.copy_delivery AS copyDelivery,
+        b.main_delivery AS mainDelivery,b.urgency_degree AS urgencyDegree,b.secret_degree AS secretDegree,
+        b.storage_period AS storagePeriod,b.summary AS summary,b.keywords AS keywords,b.theme_word  AS themeWord,
+        b.time_year AS timeYear,b.remarks AS remarks,b.off_line_address AS offLineAddress,b.off_line_number AS offLineNumber,
+        b.storage_address AS storageAddress,b.manuscript AS manuscript,b.reorganizer AS reorganizer,b.filling_person AS fillingPerson,
+        b.reorganize_time AS reorganizeTime,b.general_archival_number AS generalArchivalNumber,b.general_archival_name AS generalArchivalName,
+        b.institutional_issues AS institutionalIssues,b.document_number AS documentNumber,b.attachament_title AS attachamentTitle,
+        b.name_index AS nameIndex,b.box_number AS boxNumber,b.datetime AS datetime,b.timeremarks AS timeremarks,
+        b.original_file_number AS originalFileNumber,b.original_file_page AS originalFilePage,b.audit_status AS auditStatus,
+        b.audit_time AS auditTime,b.file_url AS fileUrl,b.user_id   AS userId ,b.create_time  AS createTime ,b.is_e_file AS isEFile,
+        b.update_time AS updateTime
+        FROM d_file_current_instruments   b
+        <where>
+            b.deleted=0
+           <if test="applyUser!=null and applyUser!=''">
+                and b.responsible_person like  CONCAT('%',#{applyUser},'%')
+            </if>
+            <!--  <if test="timeYear!=null and timeYear!=''">
+                 and b.time_year  like CONCAT('%',#{timeYear},'%')
+             </if>
+             <if test="archivalCode!=null and archivalCode!=''">
+                 and b.archival_code like CONCAT('%',#{archivalCode},'%')
+             </if>
+             <if test="storagePeriod!=null and storagePeriod!=''">
+                 and b.storage_period like CONCAT('%',#{storagePeriod},'%')
+             </if>
+             <if test="boxNumber!=null and boxNumber!=''">
+                 and b.box_number  like CONCAT('%',#{boxNumber},'%')
+             </if>-->
+            <if test="documentClassLevel!=null and documentClassLevel!=''">
+                and b.document_class_level= #{documentClassLevel}
+            </if>
+            <if test="auditStatus!=null and auditStatus!=''">
+                and b.audit_status=#{auditStatus}
+            </if>
+           <!-- <if test="title!=null and title!=''">
+                and b.title=#{title}
+            </if>-->
+        </where>
+        order by  b.create_time  desc
+
+    </select>
+
+
+    <select id="getAllListByAdmin"  resultType="com.natian.entity.archives.CurrentInstrument">
+        select  b.id  AS id,b.archival_code AS archivalCode,b.original_number  AS originalNumber,
+        b.part_number AS partNumber,b.captions AS captions, b.parent_title AS ParentTitle,
+        b.parallel_topics AS parallelTopics,b.title AS title,b.document_class_level AS documentClassLevel,
+        b.document_class_name AS documentClassName,b.responsible_person AS responsiblePerson,b.page_number AS pageNumber,
+        b.page_amount  AS pageAmount,b.original_time AS originalTime,b.archival_number AS archivalNumber,
+        b.archival_time AS archivalTime,b.secrecy_term AS secrecyTerm,b.copy_delivery AS copyDelivery,
+        b.main_delivery AS mainDelivery,b.urgency_degree AS urgencyDegree,b.secret_degree AS secretDegree,
+        b.storage_period AS storagePeriod,b.summary AS summary,b.keywords AS keywords,b.theme_word  AS themeWord,
+        b.time_year AS timeYear,b.remarks AS remarks,b.off_line_address AS offLineAddress,b.off_line_number AS offLineNumber,
+        b.storage_address AS storageAddress,b.manuscript AS manuscript,b.reorganizer AS reorganizer,b.filling_person AS fillingPerson,
+        b.reorganize_time AS reorganizeTime,b.general_archival_number AS generalArchivalNumber,b.general_archival_name AS generalArchivalName,
+        b.institutional_issues AS institutionalIssues,b.document_number AS documentNumber,b.attachament_title AS attachamentTitle,
+        b.name_index AS nameIndex,b.box_number AS boxNumber,b.datetime AS datetime,b.timeremarks AS timeremarks,
+        b.original_file_number AS originalFileNumber,b.original_file_page AS originalFilePage,b.audit_status AS auditStatus,
+        b.audit_time AS auditTime,b.file_url AS fileUrl,b.user_id   AS userId,b.create_time  AS createTime,b.is_e_file AS isEFile
+        ,b.update_time AS updateTime
+         FROM d_file_current_instruments   b
+        <!--
+       <where>
+          <if test="responsiblePerson!=null and responsiblePerson!=''">
+               and b.responsible_person like  CONCAT('%',#{responsiblePerson},'%')
+           </if>
+           <if test="timeYear!=null and timeYear!=''">
+               and b.time_year  like CONCAT('%',#{timeYear},'%')
+           </if>
+           <if test="archivalCode!=null and archivalCode!=''">
+               and b.archival_code like CONCAT('%',#{archivalCode},'%')
+           </if>
+           <if test="storagePeriod!=null and storagePeriod!=''">
+               and b.storage_period like CONCAT('%',#{storagePeriod},'%')
+           </if>
+           <if test="boxNumber!=null and boxNumber!=''">
+               and b.box_number  like CONCAT('%',#{boxNumber},'%')
+           </if>
+
+           <if test="auditStatus!=null and auditStatus!=''">
+               and b.audit_status=#{auditStatus}
+           </if>
+           <if test="title!=null and title!=''">
+               and b.title=#{title}
+           </if>
+        </where>-->
+        <where>
+            b.deleted=0
+        <if test="documentClassLevel!=null and documentClassLevel!=''">
+            and b.document_class_level= #{documentClassLevel}
+        </if>
+        </where>
+        order by  b.create_time  desc
+
+    </select>
+
+
+    <select id="getAllListByUser"  resultType="com.natian.entity.archives.CurrentInstrument">
+        select   b.id  AS id,b.archival_code AS archivalCode,b.original_number  AS originalNumber,
+        b.part_number AS partNumber,b.captions AS captions, b.parent_title AS ParentTitle,
+        b.parallel_topics AS parallelTopics,b.title AS title,b.document_class_level AS documentClassLevel,
+        b.document_class_name AS documentClassName,b.responsible_person AS responsiblePerson,b.page_number AS pageNumber,
+        b.page_amount  AS pageAmount,b.original_time AS originalTime,b.archival_number AS archivalNumber,
+        b.archival_time AS archivalTime,b.secrecy_term AS secrecyTerm,b.copy_delivery AS copyDelivery,
+        b.main_delivery AS mainDelivery,b.urgency_degree AS urgencyDegree,b.secret_degree AS secretDegree,
+        b.storage_period AS storagePeriod,b.summary AS summary,b.keywords AS keywords,b.theme_word  AS themeWord,
+        b.time_year AS timeYear,b.remarks AS remarks,b.off_line_address AS offLineAddress,b.off_line_number AS offLineNumber,
+        b.storage_address AS storageAddress,b.manuscript AS manuscript,b.reorganizer AS reorganizer,b.filling_person AS fillingPerson,
+        b.reorganize_time AS reorganizeTime,b.general_archival_number AS generalArchivalNumber,b.general_archival_name AS generalArchivalName,
+        b.institutional_issues AS institutionalIssues,b.document_number AS documentNumber,b.attachament_title AS attachamentTitle,
+        b.name_index AS nameIndex,b.box_number AS boxNumber,b.datetime AS datetime,b.timeremarks AS timeremarks,
+        b.original_file_number AS originalFileNumber,b.original_file_page AS originalFilePage,b.audit_status AS auditStatus,
+        b.audit_time AS auditTime,b.file_url AS fileUrl,b.user_id   AS userId ,b.is_e_file AS isEFile ,b.update_time AS updateTime from(
+        SELECT * FROM d_file_current_instruments a where a.id in(select dufp.file_id from d_user_file_permission dufp where dufp.user_id=#{uesrId} and dufp.audit_status=1
+        and dufp.end_time>=now()) union select * from d_file_current_instruments c where c.user_id=#{uesrId}) b
+       <!-- <where>
+            <if test="responsiblePerson!=null and responsiblePerson!=''">
+                and b.responsible_person like  CONCAT('%',#{responsiblePerson},'%')
+            </if>
+            <if test="timeYear!=null and timeYear!=''">
+                and b.time_year  like CONCAT('%',#{timeYear},'%')
+            </if>
+            <if test="archivalCode!=null and archivalCode!=''">
+                and b.archival_code like CONCAT('%',#{archivalCode},'%')
+            </if>
+            <if test="storagePeriod!=null and storagePeriod!=''">
+                and b.storage_period like CONCAT('%',#{storagePeriod},'%')
+            </if>
+            <if test="boxNumber!=null and boxNumber!=''">
+                and b.box_number  like CONCAT('%',#{boxNumber},'%')
+            </if>
+            <if test="documentClassLevel!=null and documentClassLevel!=''">
+                and b.document_class_level  like CONCAT('%',#{documentClassLevel},'%')
+            </if>
+            <if test="auditStatus!=null and auditStatus!=''">
+                and b.audit_status=#{auditStatus}
+            </if>
+            <if test="title!=null and title!=''">
+                and b.title=#{title}
+            </if>
+        </where>-->
+
+        <where>
+            b.deleted=0
+            <if test="documentClassLevel!=null and documentClassLevel!=''">
+                and b.document_class_level= #{documentClassLevel}
+            </if>
+        </where>
+        order by  b.create_time  desc
+
+    </select>
+
+    <select id="getLeftTreeParentNode" resultType="com.natian.entity.archives.CurrentInstrument">
+        select  distinct(d.time_year)   from d_file1  d  where d.time_year is  not null
+    </select>
+    <select id="getLeftTreeSecondNode" resultType="com.natian.entity.archives.CurrentInstrument">
+        select   distinct d.time_year,d.storage_period  from  d_file1  d  where d.storage_period  is not null
+    </select>
+    <select id="getLeftTreeThirdNode" resultType="com.natian.entity.archives.CurrentInstrument">
+        select    distinct d.time_year,d.storage_period,d.box_number  from  d_file1  d  where d.box_number  is not null  and  d.box_number!=''
+    </select>
+
+
+
+    <select  id="getPermissionFile"  resultType="com.natian.entity.archives.CurrentInstrument">
+     select b.id  AS id,b.archival_code AS archivalCode,b.original_number  AS originalNumber,
+        b.part_number AS partNumber,b.captions AS captions, b.parent_title AS ParentTitle,
+        b.parallel_topics AS parallelTopics,b.title AS title,b.document_class_level AS documentClassLevel,
+        b.document_class_name AS documentClassName,b.responsible_person AS responsiblePerson,b.page_number AS pageNumber,
+        b.page_amount  AS pageAmount,b.original_time AS originalTime,b.archival_number AS archivalNumber,
+        b.archival_time AS archivalTime,b.secrecy_term AS secrecyTerm,b.copy_delivery AS copyDelivery,
+        b.main_delivery AS mainDelivery,b.urgency_degree AS urgencyDegree,b.secret_degree AS secretDegree,
+        b.storage_period AS storagePeriod,b.summary AS summary,b.keywords AS keywords,b.theme_word  AS themeWord,
+        b.time_year AS timeYear,b.remarks AS remarks,b.off_line_address AS offLineAddress,b.off_line_number AS offLineNumber,
+        b.storage_address AS storageAddress,b.manuscript AS manuscript,b.reorganizer AS reorganizer,b.filling_person AS fillingPerson,
+        b.reorganize_time AS reorganizeTime,b.general_archival_number AS generalArchivalNumber,b.general_archival_name AS generalArchivalName,
+        b.institutional_issues AS institutionalIssues,b.document_number AS documentNumber,b.attachament_title AS attachamentTitle,
+        b.name_index AS nameIndex,b.box_number AS boxNumber,b.datetime AS datetime,b.timeremarks AS timeremarks,
+        b.original_file_number AS originalFileNumber,b.original_file_page AS originalFilePage,b.audit_status AS auditStatus,
+        b.audit_time AS auditTime,b.file_url AS fileUrl,b.user_id   AS userId,b.create_time  AS createTime ,b.is_e_file AS isEFile,b.update_time AS updateTime FROM  d_file_current_instruments  b    where  b.audit_status=3 and b.id
+in(
+SELECT  distinct(dufp.file_id)  from d_user_file  duf,d_user_file_permission  dufp   where    duf.id=dufp.permission_id  and dufp.permission_id=#{id}
+and dufp.user_id=#{userId} and duf.audit_status = 3
+and dufp.end_time>=now())
+</select>
+
+
+    <select id="getCurrentInstrumentsDetail"  resultType="com.natian.entity.archives.CurrentInstrument">
+        select  b.id  AS id,b.archival_code AS archivalCode,b.original_number  AS originalNumber,
+        b.part_number AS partNumber,b.captions AS captions, b.parent_title AS ParentTitle,
+        b.parallel_topics AS parallelTopics,b.title AS title,b.document_class_level AS documentClassLevel,
+        b.document_class_name AS documentClassName,b.responsible_person AS responsiblePerson,b.page_number AS pageNumber,
+        b.page_amount  AS pageAmount,b.original_time AS originalTime,b.archival_number AS archivalNumber,
+        b.archival_time AS archivalTime,b.secrecy_term AS secrecyTerm,b.copy_delivery AS copyDelivery,
+        b.main_delivery AS mainDelivery,b.urgency_degree AS urgencyDegree,b.secret_degree AS secretDegree,
+        b.storage_period AS storagePeriod,b.summary AS summary,b.keywords AS keywords,b.theme_word  AS themeWord,
+        b.time_year AS timeYear,b.remarks AS remarks,b.off_line_address AS offLineAddress,b.off_line_number AS offLineNumber,
+        b.storage_address AS storageAddress,b.manuscript AS manuscript,b.reorganizer AS reorganizer,b.filling_person AS fillingPerson,
+        b.reorganize_time AS reorganizeTime,b.general_archival_number AS generalArchivalNumber,b.general_archival_name AS generalArchivalName,
+        b.institutional_issues AS institutionalIssues,b.document_number AS documentNumber,b.attachament_title AS attachamentTitle,
+        b.name_index AS nameIndex,b.box_number AS boxNumber,b.datetime AS datetime,b.timeremarks AS timeremarks,
+        b.original_file_number AS originalFileNumber,b.original_file_page AS originalFilePage,b.audit_status AS auditStatus,
+        b.audit_time AS auditTime,b.file_url AS fileUrl,b.user_id   AS userId,b.create_time  AS createTime ,b.is_e_file AS isEFile ,b.update_time AS updateTime
+        FROM d_file_current_instruments   b
+         where   b.id=#{id}
+
+    </select>
+
+
+
+    <select id="getAllListByDept"  resultType="com.natian.entity.archives.CurrentInstrument">
+        select  b.id  AS id,b.archival_code AS archivalCode,b.original_number  AS originalNumber,
+        b.part_number AS partNumber,b.captions AS captions, b.parent_title AS ParentTitle,
+        b.parallel_topics AS parallelTopics,b.title AS title,b.document_class_level AS documentClassLevel,
+        b.document_class_name AS documentClassName,b.responsible_person AS responsiblePerson,b.page_number AS pageNumber,
+        b.page_amount  AS pageAmount,b.original_time AS originalTime,b.archival_number AS archivalNumber,
+        b.archival_time AS archivalTime,b.secrecy_term AS secrecyTerm,b.copy_delivery AS copyDelivery,
+        b.main_delivery AS mainDelivery,b.urgency_degree AS urgencyDegree,b.secret_degree AS secretDegree,
+        b.storage_period AS storagePeriod,b.summary AS summary,b.keywords AS keywords,b.theme_word  AS themeWord,
+        b.time_year AS timeYear,b.remarks AS remarks,b.off_line_address AS offLineAddress,b.off_line_number AS offLineNumber,
+        b.storage_address AS storageAddress,b.manuscript AS manuscript,b.reorganizer AS reorganizer,b.filling_person AS fillingPerson,
+        b.reorganize_time AS reorganizeTime,b.general_archival_number AS generalArchivalNumber,b.general_archival_name AS generalArchivalName,
+        b.institutional_issues AS institutionalIssues,b.document_number AS documentNumber,b.attachament_title AS attachamentTitle,
+        b.name_index AS nameIndex,b.box_number AS boxNumber,b.datetime AS datetime,b.timeremarks AS timeremarks,
+        b.original_file_number AS originalFileNumber,b.original_file_page AS originalFilePage,b.audit_status AS auditStatus,
+        b.audit_time AS auditTime,b.file_url AS fileUrl,b.user_id   AS userId ,b.create_time  AS createTime ,b.is_e_file AS isEFile ,b.update_time AS updateTime
+        FROM d_file_current_instruments   b
+        <where>
+            b.deleted=0
+            and    b.user_id  in(select   su.user_id   from  sys_user   su
+            WHERE  dept_id=(select   dept_id  from  sys_user    su  where     su.user_id=#{userId}))
+            <!--<if test="documentClassLevel!=null and documentClassLevel!=''">
+                and b.document_class_level= #{documentClassLevel}
+            </if>-->
+        </where>
+        order by  b.create_time  desc
+    </select>
+
+
+
+
+    <select id="getListByAdminByDay"  resultType="com.natian.entity.archives.CurrentInstrument">
+        select  b.id  AS id,b.archival_code AS archivalCode,b.original_number  AS originalNumber,
+        b.part_number AS partNumber,b.captions AS captions, b.parent_title AS ParentTitle,
+        b.parallel_topics AS parallelTopics,b.title AS title,b.document_class_level AS documentClassLevel,
+        b.document_class_name AS documentClassName,b.responsible_person AS responsiblePerson,b.page_number AS pageNumber,
+        b.page_amount  AS pageAmount,b.original_time AS originalTime,b.archival_number AS archivalNumber,
+        b.archival_time AS archivalTime,b.secrecy_term AS secrecyTerm,b.copy_delivery AS copyDelivery,
+        b.main_delivery AS mainDelivery,b.urgency_degree AS urgencyDegree,b.secret_degree AS secretDegree,
+        b.storage_period AS storagePeriod,b.summary AS summary,b.keywords AS keywords,b.theme_word  AS themeWord,
+        b.time_year AS timeYear,b.remarks AS remarks,b.off_line_address AS offLineAddress,b.off_line_number AS offLineNumber,
+        b.storage_address AS storageAddress,b.manuscript AS manuscript,b.reorganizer AS reorganizer,b.filling_person AS fillingPerson,
+        b.reorganize_time AS reorganizeTime,b.general_archival_number AS generalArchivalNumber,b.general_archival_name AS generalArchivalName,
+        b.institutional_issues AS institutionalIssues,b.document_number AS documentNumber,b.attachament_title AS attachamentTitle,
+        b.name_index AS nameIndex,b.box_number AS boxNumber,b.datetime AS datetime,b.timeremarks AS timeremarks,
+        b.original_file_number AS originalFileNumber,b.original_file_page AS originalFilePage,b.audit_status AS auditStatus,
+        b.audit_time AS auditTime,b.file_url AS fileUrl,b.user_id   AS userId,b.create_time  AS createTime,b.is_e_file AS isEFile ,b.update_time AS updateTime
+        FROM d_file_current_instruments   b
+        where  b.audit_status=3  and  DATE_FORMAT(b.update_time,'%Y-%m-%d')=curdate()
+        order by  b.create_time  desc
+
+    </select>
+
+
+
+
+
+    <select id="getListByUserByDay"  resultType="com.natian.entity.archives.CurrentInstrument">
+        select  b.id  AS id,b.archival_code AS archivalCode,b.original_number  AS originalNumber,
+        b.part_number AS partNumber,b.captions AS captions, b.parent_title AS ParentTitle,
+        b.parallel_topics AS parallelTopics,b.title AS title,b.document_class_level AS documentClassLevel,
+        b.document_class_name AS documentClassName,b.responsible_person AS responsiblePerson,b.page_number AS pageNumber,
+        b.page_amount  AS pageAmount,b.original_time AS originalTime,b.archival_number AS archivalNumber,
+        b.archival_time AS archivalTime,b.secrecy_term AS secrecyTerm,b.copy_delivery AS copyDelivery,
+        b.main_delivery AS mainDelivery,b.urgency_degree AS urgencyDegree,b.secret_degree AS secretDegree,
+        b.storage_period AS storagePeriod,b.summary AS summary,b.keywords AS keywords,b.theme_word  AS themeWord,
+        b.time_year AS timeYear,b.remarks AS remarks,b.off_line_address AS offLineAddress,b.off_line_number AS offLineNumber,
+        b.storage_address AS storageAddress,b.manuscript AS manuscript,b.reorganizer AS reorganizer,b.filling_person AS fillingPerson,
+        b.reorganize_time AS reorganizeTime,b.general_archival_number AS generalArchivalNumber,b.general_archival_name AS generalArchivalName,
+        b.institutional_issues AS institutionalIssues,b.document_number AS documentNumber,b.attachament_title AS attachamentTitle,
+        b.name_index AS nameIndex,b.box_number AS boxNumber,b.datetime AS datetime,b.timeremarks AS timeremarks,
+        b.original_file_number AS originalFileNumber,b.original_file_page AS originalFilePage,b.audit_status AS auditStatus,
+        b.audit_time AS auditTime,b.file_url AS fileUrl,b.user_id   AS userId,b.is_e_file AS isEFile ,b.update_time AS updateTime  from(
+        SELECT * FROM d_file_current_instruments a where a.id in(select dufp.file_id from d_user_file_permission dufp where dufp.user_id=#{uesrId} and dufp.audit_status=1
+        and dufp.end_time>=now()) union select * from d_file_current_instruments c where c.user_id=#{uesrId}) b
+        where  b.audit_status=3  and  DATE_FORMAT(b.update_time,'%Y-%m-%d')=curdate()
+        order by  b.create_time  desc
+
+    </select>
+
+
+
+
+    <select  id="getAllTotalByAudit"  resultType="map">
+        SELECT
+        COUNT(*) AS Total,
+        SUM(case when a.audit_status=3 then 1 else 0 end) as pass,
+        SUM(case when a.audit_status <![CDATA[ <> ]]>3 then 1 else 0 end) as nopass
+        FROM
+        d_file_current_instruments a
+    </select>
+
+
+    <select id="getAllTotalByAuditByMonth"  resultType="map">
+        SELECT
+        DATE_FORMAT(a.update_time, '%Y-%m') AS monthly,
+        COUNT(*) AS Total,
+        SUM(case when a.audit_status=3 then 1 else 0 end) as pass,
+        SUM(case when a.audit_status <![CDATA[ <> ]]>3 then 1 else 0 end) as nopass
+        FROM
+        d_file_current_instruments a  GROUP BY DATE_FORMAT(a.update_time, '%Y-%m')
+    </select>
+</mapper>

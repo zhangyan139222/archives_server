@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆</title>
+</head>
+<body>
+<div class="row">
+    <form method="post" action="/loginVerify">
+        <div class="col-xs-6 pull_left">
+            <div class="form-group">
+                用户名：<input class="form-control" type="tel" id="user-name-label" name="user-name-label" placeholder="请输入用户名" maxlength="4">
+            </div>
+        </div>
+        <div class="col-xs-6 pull_left">
+            <div class="form-group">
+                密 &nbsp;&nbsp;&nbsp;码：<input class="form-control" type="tel" id="password-label" name="password-label" placeholder="请输入登录密码" maxlength="4">
+            </div>
+        </div>
+        <div class="col-xs-6 pull_left">
+            <a href="javascript:void(0);" title="点击更换验证码">
+                <img id="imgVerify" src="login/getVerify" alt="更换验证码" height="36" width="170" onclick="getVerify(this);">
+            </a>
+        </div>
+
+        <input type="submit" value="submit"/>
+    </form>
+</div>
+</body>
+<script type="text/javascript" src="./js/jquery.min.js"></script>
+<script>
+
+    function getVerify() {
+        // $("#imgCode").on("click", function() {
+        $("#imgVerify").attr("src", 'login/getVerify?' + Math.random());//jquery方式
+        // });
+    }
+
+</script>
+</html>
