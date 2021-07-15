@@ -14,22 +14,20 @@ import java.util.Map;
  * @date 2021/6/16 18:39
  * @Description:
  */
-public interface UserFileService   extends IService<UserFile> {
-    public Map<String,Object> getUserFileListByUser(String uesrId, UserFile userFile, Integer page, Integer size);
+public interface UserFileService extends IService<UserFile> {
+    public Map<String, Object> getUserFileListByUser(String uesrId, UserFile userFile, Integer page, Integer size);
 
 
-    boolean  saveUserFile(UserFile  userFile);
+    boolean saveUserFile(UserFile userFile);
 
-    boolean updateUserFile(UserFile  userFile);
+    boolean updateUserFile(UserFile userFile);
 
-    boolean  examineUserFile(String id,Integer auditStatus,String  reason,String  userId);
-
+    boolean examineUserFile(String id, Integer auditStatus, String reason, String userId);
 
 
     Map<String, Object> getAllTotalByAudit();
 
-    Map<String, Object>  getAllTotalByAuditByMonth();
-
+    Map<String, Object> getAllTotalByAuditByMonth();
 
 
 }

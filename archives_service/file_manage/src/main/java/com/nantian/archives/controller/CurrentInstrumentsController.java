@@ -15,10 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @RestController
 @RequestMapping("CurrentInstruments")
@@ -51,7 +49,7 @@ public class CurrentInstrumentsController {
 public R getCurrentInstrumentsListByUser( @ApiParam(value="当前页码",required = false)   Integer page,
                                           @ApiParam(value="每页记录数",required = false)   Integer  size,
                                           @ApiParam(value="分类号",required = false) String documentClassLevel,
-                                          @ApiParam(value="用户名",required = false)  String userId,
+                                          @ApiParam(value="用户ID",required = false)  String userId,
                                           @ApiParam(value="审核状态",required = false)  String auditStatus) {
     try {
         Map<String, Object> map = currentInstrumentsService.getCurrentInstrumentListByUser(page, size, userId, documentClassLevel, auditStatus);
@@ -97,15 +95,15 @@ public R getCurrentInstrumentsListByUser( @ApiParam(value="当前页码",require
      * @return
      */
 
-    @ApiOperation(value ="查看数据详情",notes = "查看CurrentInstruments数据详情")
+    @ApiOperation(value = "查看数据详情", notes = "查看CurrentInstruments数据详情")
     @GetMapping("/getDetail/{id}/{permissionId}")
-    public   R  getCurrentInstrumentsDetail(@ApiParam(value="需要查询数据的id",required = true)  @PathVariable String id,
-                                            @ApiParam(value="申请的Id",required = true)  @PathVariable String permissionId){
+    public R getCurrentInstrumentsDetail(@ApiParam(value = "需要查询数据的ID", required = true) @PathVariable String id,
+                                         @ApiParam(value = "申请的ID", required = true) @PathVariable String permissionId) {
         try {
-            CurrentInstrument currentInstrument= currentInstrumentsService.getCurrentInstrumentsDetail(id,permissionId);
-            return R.ok("获取数据详情成功").data("currentInstrument",currentInstrument);
-        }catch (Exception  e){
-              return R.error("获取数据详情失败");
+            CurrentInstrument currentInstrument = currentInstrumentsService.getCurrentInstrumentsDetail(id, permissionId);
+            return R.ok("获取数据详情成功").data("currentInstrument", currentInstrument);
+        } catch (Exception e) {
+            return R.error("获取数据详情失败");
         }
 
     }
@@ -133,7 +131,7 @@ public R getCurrentInstrumentsListByUser( @ApiParam(value="当前页码",require
     @ApiOperation(value ="删除数据",notes = "删除currentInstrument数据详情")
     @PostMapping("/delete/{id}/{userId}")
     public   R  deleteCurrentInstruments(@ApiParam(value="需要删除数据的id",required = true)  @PathVariable String id,
-                                         @ApiParam(value="需要删除数据的id",required = true)  @PathVariable String userId ){
+                                         @ApiParam(value="用户ID",required = true)  @PathVariable String userId ){
         return currentInstrumentsService.deleteCurrentInstruments(id,userId)? R.ok("删除数据成功"):R.error("删除数据失败");
     }
 
@@ -147,7 +145,7 @@ public R getCurrentInstrumentsListByUser( @ApiParam(value="当前页码",require
     public R updateExamine(@ApiParam(value = "id", required = true) @Validated({Release.class}) String id,
                            @ApiParam(value = "审核状态", required = true) Integer auditStatus,
                            @ApiParam(value = "驳回理由", required = false) String auditMind,
-                           @ApiParam(value = "用户ID", required = false) String userId) {
+                           @ApiParam(value = "用户ID", required = true) String userId) {
 
         return currentInstrumentsService.updateExamine(id, auditStatus, auditMind, userId) ?
                 R.ok("数据审核状态更新成功") : R.error("数据审核状态更新失败");
@@ -201,47 +199,60 @@ public R getCurrentInstrumentsListByUser( @ApiParam(value="当前页码",require
     }
 
 
-
-
-    @ApiOperation(value="查询所有的数据")
+    @ApiOperation(value = "查询所有的数据(归档、查档)")
     @GetMapping("/getList")
-    public  R  getAllList(@ApiParam(value = "id",required = true)   String userId,
-                          @ApiParam(value="当前页码",required = true)Long page,
-                          @ApiParam(value="每页记录数",required = true) Long  size,
-                          @ApiParam(value = "申请人",required = false)  String applyUser,
-                          @ApiParam(value = "申请类型",required = true)  Integer applyType){
+    public R getAllList(@ApiParam(value = "id", required = true) String userId,
+                        @ApiParam(value = "当前页码", required = true) Long page,
+                        @ApiParam(value = "每页记录数", required = true) Long size,
+                        @ApiParam(value = "申请人", required = false) String applyUser,
+                        @ApiParam(value = "申请类型", required = true) Integer applyType) {
         try {
-            Map<String, Object> allListByDay = currentInstrumentsService.getAllList(userId,page,size,applyUser,applyType);
+            Map<String, Object> allListByDay = currentInstrumentsService.getAllList(userId, page, size, applyUser, applyType);
             return R.ok("成功获取今天的所有数据").data(allListByDay);
-        }catch (Exception  e){
+        } catch (Exception e) {
             e.printStackTrace();
             return R.ok("获取今天的所有数据失败");
         }
     }
 
-    @ApiOperation(value="统计分析")
+    @ApiOperation(value = "统计分析")
     @GetMapping("/getAllTotal")
-    public  R getAllTotal(){
-        try{
-            Map<String,Object>  map=new HashMap<>();
-            List<Map<String,Object>>fileMap=new ArrayList<>();
-            List<Map<String,Object>>lookMap=new ArrayList<>();
-            Map<String, Object> AuditMap = currentInstrumentsService.getAllTotalByAudit();
-            Map<String, Object> AuditMonthMap = currentInstrumentsService.getAllTotalByAuditByMonth();
-            Map<String, Object> AuditMap1 = userFileService.getAllTotalByAudit();
-//        List<UserFile> AuditMonthMap1 = userFileService.getAllTotalByAuditByMonth();
-            fileMap.add(AuditMap);
-//        fileMap.add(AuditMonthMap);
-            lookMap.add(AuditMap1);
-            map.put("file",fileMap);
-            map.put("look",lookMap);
-
-
+    public R getAllTotal() {
+        try {
+            Map<String, Object> map = new HashMap<>();
+            List<Map<String, Object>> fileMap = new ArrayList<>();
+            List<Map<String, Object>> lookMap = new ArrayList<>();
+            Map<String, Object> auditMap = currentInstrumentsService.getAllTotalByAudit();
+            Map<String, Object> auditMonthMap = currentInstrumentsService.getAllTotalByAuditByMonth();
+            Map<String, Object> auditMap1 = userFileService.getAllTotalByAudit();
+            Map<String, Object> auditMonthMap1 = userFileService.getAllTotalByAuditByMonth();
+            fileMap.add(auditMap);
+//            fileMap.add(auditMonthMap);
+//            lookMap.add(auditMonthMap1);
+            lookMap.add(auditMap1);
+            map.put("file", fileMap);
+            map.put("look", lookMap);
             return R.ok("成功获取统计结果").data(map);
-        }catch(Exception  e){
+        } catch (Exception e) {
             e.printStackTrace();
             return R.ok("获取统计结果失败");
         }
 
     }
+
+
+    @ApiOperation(value = "修改归档分类号")
+    @GetMapping("/updateClassNameber")
+    public R updateClassNameber(@ApiParam(value = "档案ID", required = true) String id,
+                                @ApiParam(value = "档案分类ID", required = true) String documentClassLevel) {
+        CurrentInstrument currentInstrument = new CurrentInstrument();
+        currentInstrument.setId(id);
+        currentInstrument.setDocumentClassLevel(documentClassLevel);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        currentInstrument.setUpdateTime(simpleDateFormat.format(new Date()));
+        return currentInstrumentsService.updateById(currentInstrument) ? R.ok("归档数据修改成功") : R.ok("归档数据修改失败");
+
+    }
+
+
 }

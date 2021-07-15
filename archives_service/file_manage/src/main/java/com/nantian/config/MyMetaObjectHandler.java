@@ -17,8 +17,6 @@ import java.util.Date;
  */
 @Component
 public class MyMetaObjectHandler  implements MetaObjectHandler {
-//    @Resource
-//    SimpleDateFormat simpleDateFormat;
     SimpleDateFormat   simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 

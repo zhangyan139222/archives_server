@@ -17,7 +17,7 @@ public class FileConfig {
 
 
     @Bean
-    public MultipartConfigElement multipartConfigElement(){
+    public MultipartConfigElement multipartConfigElement() {
         MultipartConfigFactory factory = new MultipartConfigFactory();
         factory.setLocation(uploadFolder);
         //文件最大

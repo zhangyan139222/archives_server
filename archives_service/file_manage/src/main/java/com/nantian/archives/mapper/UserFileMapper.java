@@ -41,11 +41,17 @@ public interface UserFileMapper  extends BaseMapper<UserFile> {
 
 
 
-    @Select("select  duf.*  from  d_user_file  duf  where duf.audit_status=4  and   date_format(duf.update_time,'%Y-%m-%d')=curdate()")
+    /*@Select("select  duf.*  from  d_user_file  duf  where duf.audit_status=4  and   date_format(duf.update_time,'%Y-%m-%d')=curdate()")
+    List<UserFile>  getUserFileByAdminByDay();*/
+    @Select("select  duf.*,dufp.end_time   AS endTime  from  d_user_file  duf   left  join  d_user_file_permission  dufp  on duf.id=dufp.permission_id" +
+            " where   duf.audit_status=4 and   date_format(duf.update_time,'%Y-%m-%d')=curdate()    and dufp.end_time<now()")
     List<UserFile>  getUserFileByAdminByDay();
 
 
-    @Select("select  duf.*  from  d_user_file  duf  where   duf.user_id=#{userId}   duf.audit_status=3  and   date_format(duf.update_time,'%Y-%m-%d')=curdate()")
+    /*@Select("select  duf.*  from  d_user_file  duf  where   duf.user_id=#{userId}   duf.audit_status=3  and   date_format(duf.update_time,'%Y-%m-%d')=curdate()")
+    List<UserFile>  getUserFileByUserByDay(@Param("userId")String userId);*/
+    @Select("select  duf.*,dufp.end_time   AS endTime  from  d_user_file  duf   left  join  d_user_file_permission  dufp  on duf.id=dufp.permission_id" +
+            " where duf.user_id=#{userId} and  duf.audit_status=4 and   date_format(duf.update_time,'%Y-%m-%d')=curdate()    and dufp.end_time<now()")
     List<UserFile>  getUserFileByUserByDay(@Param("userId")String userId);
 
 
@@ -55,7 +61,7 @@ public interface UserFileMapper  extends BaseMapper<UserFile> {
    Map<String, Object> getAllTotalByAudit();
 
     @Select(" SELECT DATE_FORMAT(a.update_time, '%Y-%m') AS monthly,COUNT(*) AS Total, SUM(case when a.audit_status=3 then 1 else 0 end) as pass, " +
-            "SUM(case when a.audit_status a.audit_status <>3  then 1 else 0 end) as nopass FROM d_user_file a " +
+            "SUM(case when  a.audit_status <>3  then 1 else 0 end) as nopass FROM d_user_file a " +
             "GROUP BY DATE_FORMAT(a.update_time, '%Y-%m') ")
     Map<String, Object> getAllTotalByAuditByMonth();
 }

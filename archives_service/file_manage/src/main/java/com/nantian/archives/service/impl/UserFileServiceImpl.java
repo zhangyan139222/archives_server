@@ -39,49 +39,49 @@ public class UserFileServiceImpl   extends ServiceImpl<UserFileMapper, UserFile>
     private FileOperationLoggingMapper  fileOperationLoggingMapper;
 
     @Override
-    public Map<String,Object> getUserFileListByUser(String userId, UserFile  userFile, Integer page, Integer size) {
-        Page<UserFile>  pages=null;
-         if(page!=null && size!=null){
-              pages=new Page<>(page,size);
-         }
+    public Map<String, Object> getUserFileListByUser(String userId, UserFile userFile, Integer page, Integer size) {
+        Page<UserFile> pages = null;
+        if (page != null && size != null) {
+            pages = new Page<>(page, size);
+        }
         IPage<UserFile> userFileIPage = null;
-        List<UserFile>  userFiles=new ArrayList<>();
+        List<UserFile> userFiles = new ArrayList<>();
         User user = userMapper.selectById(userId);
-        Map<String,Object>  map=new HashMap<>();
-        if (user.getLevel()!=null && user.getLevel()==0) {
+        Map<String, Object> map = new HashMap<>();
+        if (user.getLevel() != null && user.getLevel() == 0) {
             QueryWrapper<UserFile> queryWrapper = new QueryWrapper<>();
-             if(StringUtils.isNotEmpty(userFile.getTitle())){
-                 queryWrapper.and(w->w.like("title",userFile.getTitle()).or().like("content",userFile.getTitle()));
-             }
-             if(StringUtils.isNotEmpty(userFile.getDeptNo())){
-                 queryWrapper.like("dept_no",userFile.getDeptNo());
-             }
-             if(userFile.getAuditStatus()!=null){
-                 queryWrapper.eq("audit_status",userFile.getAuditStatus());
-             }
-            if(StringUtils.isNotEmpty(userFile.getCreateTime())){
-                queryWrapper.like("create_time",userFile.getCreateTime());
+            if (StringUtils.isNotEmpty(userFile.getTitle())) {
+                queryWrapper.and(w -> w.like("title", userFile.getTitle()).or().like("content", userFile.getTitle()));
+            }
+            if (StringUtils.isNotEmpty(userFile.getDeptNo())) {
+                queryWrapper.like("dept_no", userFile.getDeptNo());
+            }
+            if (userFile.getAuditStatus() != null) {
+                queryWrapper.eq("audit_status", userFile.getAuditStatus());
+            }
+            if (StringUtils.isNotEmpty(userFile.getCreateTime())) {
+                queryWrapper.like("create_time", userFile.getCreateTime());
             }
 
-            if(pages!=null){
-                userFileIPage = userFileMapper.getUserFileOfPageByAdmin(pages,null);
-                map.put("iPages",userFileIPage);
+            if (pages != null) {
+                userFileIPage = userFileMapper.getUserFileOfPageByAdmin(pages, null);
+                map.put("iPages", userFileIPage);
 
-            }else{
+            } else {
                 userFiles = userFileMapper.getUserFileByAdmin();
                 map.put("iPages", userFiles);
             }
-        }else if(user.getLevel()!=null && user.getLevel()==1){
+        } else if (user.getLevel() != null && user.getLevel() == 1) {
 
         } else {     //其他普通用户获取自己申请数据列表
 
-          if(pages!=null){
-              userFileIPage = userFileMapper.getUserFileListByUserOfPage(pages,userId);
-              map.put("iPages",userFileIPage);
-          }else{
-              userFiles = userFileMapper.getUserFileListByUser(userId);
-              map.put("iPages",userFiles);
-          }
+            if (pages != null) {
+                userFileIPage = userFileMapper.getUserFileListByUserOfPage(pages, userId);
+                map.put("iPages", userFileIPage);
+            } else {
+                userFiles = userFileMapper.getUserFileListByUser(userId);
+                map.put("iPages", userFiles);
+            }
 
         }
       /*  list=userFileIPage.getRecords();
@@ -96,7 +96,7 @@ public class UserFileServiceImpl   extends ServiceImpl<UserFileMapper, UserFile>
         }
         userFileIPage.setRecords(list);*/
 //        return userFileIPage;
-        return   map;
+        return map;
 
     }
 
@@ -150,30 +150,30 @@ public class UserFileServiceImpl   extends ServiceImpl<UserFileMapper, UserFile>
     @Transactional
     public boolean examineUserFile(String id, Integer auditStatus, String auditMind, String userId) {
         //档案查阅申请审核
-        UserFile  userFile=new UserFile();
+        UserFile userFile = new UserFile();
         userFile.setId(id);
         userFile.setAuditStatus(auditStatus);
         userFile.setReason(auditMind);
-        SimpleDateFormat  simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         userFile.setAuditTime(simpleDateFormat.format(new Date()));
         int save = userFileMapper.updateById(userFile);
-        FileOperationLogging   fileOperationLogging=new FileOperationLogging();
+        FileOperationLogging fileOperationLogging = new FileOperationLogging();
         fileOperationLogging.setFileId(id);
         fileOperationLogging.setUserId(userId);
         fileOperationLogging.setFinishTime(simpleDateFormat.format(new Date()));
-        if(auditStatus!=null &&  auditStatus==1){
+        if (auditStatus != null && auditStatus == 1) {
             fileOperationLogging.setOperName("档案查阅申请审核通过");
         }
-        if(auditStatus!=null &&  auditStatus==2){
+        if (auditStatus != null && auditStatus == 2) {
             fileOperationLogging.setOperName("档案查阅申请审核不通过");
             fileOperationLogging.setOperDesc(auditMind);
         }
         fileOperationLogging.setOperType(2);
         int save1 = fileOperationLoggingMapper.insert(fileOperationLogging);
 
-        if(save!=0  &&  save1!=0){
+        if (save != 0 && save1 != 0) {
             return true;
-        }else{
+        } else {
             return false;
         }
 

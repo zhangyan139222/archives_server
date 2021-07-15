@@ -23,6 +23,12 @@ public class FileOperationLoggingServiceImpl   extends ServiceImpl<FileOperation
     private FileOperationLoggingMapper fileOperationLoggingMapper;
 
 
+    /**
+     * 获取档案操作对应日志
+     * @param fileId
+     * @return
+     */
+
     @Override
     public List<FileOperationLogging> getOperationList(String fileId) {
         try {

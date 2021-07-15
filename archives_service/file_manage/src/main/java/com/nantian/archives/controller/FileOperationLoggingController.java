@@ -29,14 +29,13 @@ public class FileOperationLoggingController {
     @Resource
     private FileOperationLoggingService   fileOperationLoggingService;
 
-
-    @ApiOperation(value="获取数据对应的操作日志")
+    @ApiOperation(value = "获取数据对应的操作日志")
     @GetMapping("/getOperationList/{fileId}")
-    public R getOperationList( @PathVariable @ApiParam(value="档案ID",required = true) String fileId){
-        try{
+    public R getOperationList(@PathVariable @ApiParam(value = "档案ID", required = true) String fileId) {
+        try {
             List<FileOperationLogging> operationList = fileOperationLoggingService.getOperationList(fileId);
-            return R.ok("获取操作日志成功").data("operationList",operationList);
-        }catch (Exception  e){
+            return R.ok("获取操作日志成功").data("operationList", operationList);
+        } catch (Exception e) {
             e.printStackTrace();
             return R.ok("获取操作日志失败");
         }

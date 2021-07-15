@@ -33,12 +33,11 @@ import java.util.UUID;
 public class UserFilePermissionServiceImpl   extends ServiceImpl<UserFilePermissionMapper, UserFilePermission>
         implements UserFilePermissionService {
     @Resource
-    private    UserFilePermissionMapper  userFilePermissionMapper;
-
+    private UserFilePermissionMapper userFilePermissionMapper;
     @Resource
-    private UserFileMapper  userFileMapper;
+    private UserFileMapper userFileMapper;
     @Resource
-    private FileOperationLoggingMapper   fileOperationLoggingMapper;
+    private FileOperationLoggingMapper fileOperationLoggingMapper;
 
     @Override
     public Integer getFileIsPermission(String fileId) {
@@ -47,21 +46,18 @@ public class UserFilePermissionServiceImpl   extends ServiceImpl<UserFilePermiss
 
     @Override
     public boolean saveUserFilePermission(JSONObject jsonObject) {
-        UserFilePermission  userFilePermission=new UserFilePermission();
-        int result=0;
-        String applyId= jsonObject.get("applyId").toString();
-//        List<CurrentInstrument> currentInstruments = (List<CurrentInstrument>) jsonObject.get("currentInstruments");
-        List<String> currentInstruments=(List<String>) jsonObject.get("fileIds");    //授权数据ID
+        UserFilePermission userFilePermission = new UserFilePermission();
+        int result = 0;
+        String applyId = jsonObject.get("applyId").toString();
+        List<String> currentInstruments = (List<String>) jsonObject.get("fileIds");    //授权数据ID
 
         String saveTime = jsonObject.get("endTime").toString();
-        String userId=jsonObject.get("userId").toString();
-        String examinId=jsonObject.get("userId").toString();
-        List<UserFilePermission> userFilePermissions=new ArrayList<>();
-        for (String  str:currentInstruments){
-//            String jsonString = JSONObject.toJSONString(object);
-//            CurrentInstrument currentInstrument = JSONObject.parseObject(jsonString, CurrentInstrument.class);
+        String userId = jsonObject.get("userId").toString();
+        String examinId = jsonObject.get("userId").toString();
+        List<UserFilePermission> userFilePermissions = new ArrayList<>();
+        for (String str : currentInstruments) {
             Integer fileIsPermission = userFilePermissionMapper.getFileIsPermission(str);
-            if(fileIsPermission==0){    //对于未授权的数据才能授权
+            if (fileIsPermission == 0) {    //对于未授权的数据才能授权
                 userFilePermission.setFileId(str);
                 userFilePermission.setPermissionId(applyId);
                 userFilePermission.setId(UUID.randomUUID().toString());
@@ -70,30 +66,30 @@ public class UserFilePermissionServiceImpl   extends ServiceImpl<UserFilePermiss
                 userFilePermission.setAuditStatus(1);
                 userFilePermission.setUserId(userId);
                 int save = userFilePermissionMapper.insert(userFilePermission);
-                if(save!=0){
+                if (save != 0) {
                     result++;
                 }
             }
         }
-        int up=0;
-        if(result!=0){
-            UserFile userFile=new UserFile();
+        int up = 0;
+        if (result != 0) {
+            UserFile userFile = new UserFile();
             userFile.setAuditStatus(3);
             userFile.setId(applyId);
-             up = userFileMapper.updateById(userFile);
+            up = userFileMapper.updateById(userFile);
         }
-        if(result==userFilePermissions.size() && up!=0 ){
+        if (result == userFilePermissions.size() && up != 0) {
             //新增档案日志
-            FileOperationLogging fileOperationLogging=new FileOperationLogging();
+            FileOperationLogging fileOperationLogging = new FileOperationLogging();
             fileOperationLogging.setFileId(applyId);
             fileOperationLogging.setUserId(userId);
-            SimpleDateFormat simpleDateFormat=new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
             fileOperationLogging.setFinishTime(simpleDateFormat.format(new Date()));
             fileOperationLogging.setOperName("档案查阅申请已授权");
             fileOperationLogging.setOperType(2);
             fileOperationLoggingMapper.insert(fileOperationLogging);
             return true;
-        }else{
+        } else {
             return false;
         }
     }

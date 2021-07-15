@@ -1,0 +1,64 @@
+2021-07-14 17:15:24.477 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid server:
+2021-07-14 17:15:24.478 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid port: 8014
+2021-07-14 17:15:24.478 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid servlet:
+2021-07-14 17:15:24.478 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid context-path: /archives/
+2021-07-14 17:15:24.478 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid spring:
+2021-07-14 17:15:24.478 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid datasource:
+2021-07-14 17:15:24.478 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid driver-class-name: com.mysql.cj.jdbc.Driver
+2021-07-14 17:15:24.478 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid username: root
+2021-07-14 17:15:24.478 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid password: root
+2021-07-14 17:15:24.478 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid logging:
+2021-07-14 17:15:24.479 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid level:
+2021-07-14 17:15:24.479 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid com.nantian: debug
+2021-07-14 17:15:24.498 [main] WARN  c.a.cloud.nacos.client.NacosPropertySourceBuilder - Ignore the empty nacos configuration and get it based on dataId[archives-server.properties] & group[DEFAULT_GROUP]
+2021-07-14 17:15:24.503 [main] WARN  c.a.cloud.nacos.client.NacosPropertySourceBuilder - Ignore the empty nacos configuration and get it based on dataId[archives-server-dev.properties] & group[DEFAULT_GROUP]
+2021-07-14 17:15:26.901 [main] WARN  com.netflix.config.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2021-07-14 17:15:26.907 [main] WARN  com.netflix.config.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2021-07-14 17:29:18.599 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid server:
+2021-07-14 17:29:18.599 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid port: 8014
+2021-07-14 17:29:18.599 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid servlet:
+2021-07-14 17:29:18.599 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid context-path: /archives/
+2021-07-14 17:29:18.599 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid spring:
+2021-07-14 17:29:18.599 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid datasource:
+2021-07-14 17:29:18.599 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid driver-class-name: com.mysql.cj.jdbc.Driver
+2021-07-14 17:29:18.599 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid username: root
+2021-07-14 17:29:18.600 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid password: root
+2021-07-14 17:29:18.600 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid logging:
+2021-07-14 17:29:18.600 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid level:
+2021-07-14 17:29:18.600 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid com.nantian: debug
+2021-07-14 17:29:18.604 [main] WARN  c.a.cloud.nacos.client.NacosPropertySourceBuilder - Ignore the empty nacos configuration and get it based on dataId[archives-server.properties] & group[DEFAULT_GROUP]
+2021-07-14 17:29:18.616 [main] WARN  c.a.cloud.nacos.client.NacosPropertySourceBuilder - Ignore the empty nacos configuration and get it based on dataId[archives-server-dev.properties] & group[DEFAULT_GROUP]
+2021-07-14 17:29:20.778 [main] WARN  com.netflix.config.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2021-07-14 17:29:20.782 [main] WARN  com.netflix.config.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2021-07-14 17:36:16.207 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid server:
+2021-07-14 17:36:16.207 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid port: 8014
+2021-07-14 17:36:16.208 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid servlet:
+2021-07-14 17:36:16.208 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid context-path: /archives/
+2021-07-14 17:36:16.208 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid spring:
+2021-07-14 17:36:16.208 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid datasource:
+2021-07-14 17:36:16.208 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid driver-class-name: com.mysql.cj.jdbc.Driver
+2021-07-14 17:36:16.208 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid username: root
+2021-07-14 17:36:16.208 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid password: root
+2021-07-14 17:36:16.208 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid logging:
+2021-07-14 17:36:16.208 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid level:
+2021-07-14 17:36:16.208 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid com.nantian: debug
+2021-07-14 17:36:16.213 [main] WARN  c.a.cloud.nacos.client.NacosPropertySourceBuilder - Ignore the empty nacos configuration and get it based on dataId[archives-server.properties] & group[DEFAULT_GROUP]
+2021-07-14 17:36:16.215 [main] WARN  c.a.cloud.nacos.client.NacosPropertySourceBuilder - Ignore the empty nacos configuration and get it based on dataId[archives-server-dev.properties] & group[DEFAULT_GROUP]
+2021-07-14 17:36:18.335 [main] WARN  com.netflix.config.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2021-07-14 17:36:18.338 [main] WARN  com.netflix.config.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2021-07-14 17:39:51.234 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid server:
+2021-07-14 17:39:51.234 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid port: 8014
+2021-07-14 17:39:51.234 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid servlet:
+2021-07-14 17:39:51.234 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid context-path: /archives/
+2021-07-14 17:39:51.234 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid spring:
+2021-07-14 17:39:51.235 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid datasource:
+2021-07-14 17:39:51.235 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid driver-class-name: com.mysql.cj.jdbc.Driver
+2021-07-14 17:39:51.235 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid username: root
+2021-07-14 17:39:51.235 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid password: root
+2021-07-14 17:39:51.235 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid logging:
+2021-07-14 17:39:51.235 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid level:
+2021-07-14 17:39:51.235 [main] WARN  c.a.cloud.nacos.parser.NacosDataPropertiesParser - the config data is invalid com.nantian: debug
+2021-07-14 17:39:51.239 [main] WARN  c.a.cloud.nacos.client.NacosPropertySourceBuilder - Ignore the empty nacos configuration and get it based on dataId[archives-server.properties] & group[DEFAULT_GROUP]
+2021-07-14 17:39:51.241 [main] WARN  c.a.cloud.nacos.client.NacosPropertySourceBuilder - Ignore the empty nacos configuration and get it based on dataId[archives-server-dev.properties] & group[DEFAULT_GROUP]
+2021-07-14 17:39:53.429 [main] WARN  com.netflix.config.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2021-07-14 17:39:53.432 [main] WARN  com.netflix.config.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.

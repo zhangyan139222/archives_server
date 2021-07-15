@@ -9,13 +9,14 @@ import java.util.Map;
 
 
 public interface DocumentTreeService extends IService<DocumentTree> {
-    List<Map<String,Object>> getLeftTree();
-    Map<String,Object>  getDateil(String id);
+    List<Map<String, Object>> getLeftTree();
+
+    Map<String, Object> getDateil(String id);
 
     String getDocumentDesc(String documentClassParentId);
 
 
-    boolean removeBydocumentClassLevel( String documentClassLevel);
+    boolean removeBydocumentClassLevel(String documentClassLevel);
 
 }
 

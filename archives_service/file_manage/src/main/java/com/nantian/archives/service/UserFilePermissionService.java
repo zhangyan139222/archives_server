@@ -15,9 +15,9 @@ import org.springframework.stereotype.Service;
  * @Description:
  */
 
-public interface UserFilePermissionService  extends IService<UserFilePermission> {
+public interface UserFilePermissionService extends IService<UserFilePermission> {
 
     Integer getFileIsPermission(String fileId);
 
-   boolean saveUserFilePermission(JSONObject  jsonObject);
+    boolean saveUserFilePermission(JSONObject jsonObject);
 }

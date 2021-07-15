@@ -23,18 +23,6 @@
            <if test="applyUser!=null and applyUser!=''">
                 and b.responsible_person like  CONCAT('%',#{applyUser},'%')
             </if>
-            <!--  <if test="timeYear!=null and timeYear!=''">
-                 and b.time_year  like CONCAT('%',#{timeYear},'%')
-             </if>
-             <if test="archivalCode!=null and archivalCode!=''">
-                 and b.archival_code like CONCAT('%',#{archivalCode},'%')
-             </if>
-             <if test="storagePeriod!=null and storagePeriod!=''">
-                 and b.storage_period like CONCAT('%',#{storagePeriod},'%')
-             </if>
-             <if test="boxNumber!=null and boxNumber!=''">
-                 and b.box_number  like CONCAT('%',#{boxNumber},'%')
-             </if>-->
             <if test="documentClassLevel!=null and documentClassLevel!=''">
                 and b.document_class_level= #{documentClassLevel}
             </if>
@@ -74,27 +62,12 @@
            <if test="applyUser!=null and applyUser!=''">
                 and b.responsible_person like  CONCAT('%',#{applyUser},'%')
             </if>
-            <!--  <if test="timeYear!=null and timeYear!=''">
-                 and b.time_year  like CONCAT('%',#{timeYear},'%')
-             </if>
-             <if test="archivalCode!=null and archivalCode!=''">
-                 and b.archival_code like CONCAT('%',#{archivalCode},'%')
-             </if>
-             <if test="storagePeriod!=null and storagePeriod!=''">
-                 and b.storage_period like CONCAT('%',#{storagePeriod},'%')
-             </if>
-             <if test="boxNumber!=null and boxNumber!=''">
-                 and b.box_number  like CONCAT('%',#{boxNumber},'%')
-             </if>-->
             <if test="documentClassLevel!=null and documentClassLevel!=''">
                 and b.document_class_level= #{documentClassLevel}
             </if>
             <if test="auditStatus!=null and auditStatus!=''">
                 and b.audit_status=#{auditStatus}
             </if>
-           <!-- <if test="title!=null and title!=''">
-                and b.title=#{title}
-            </if>-->
         </where>
         order by  b.create_time  desc
 
@@ -119,31 +92,6 @@
         b.audit_time AS auditTime,b.file_url AS fileUrl,b.user_id   AS userId,b.create_time  AS createTime,b.is_e_file AS isEFile
         ,b.update_time AS updateTime
          FROM d_file_current_instruments   b
-        <!--
-       <where>
-          <if test="responsiblePerson!=null and responsiblePerson!=''">
-               and b.responsible_person like  CONCAT('%',#{responsiblePerson},'%')
-           </if>
-           <if test="timeYear!=null and timeYear!=''">
-               and b.time_year  like CONCAT('%',#{timeYear},'%')
-           </if>
-           <if test="archivalCode!=null and archivalCode!=''">
-               and b.archival_code like CONCAT('%',#{archivalCode},'%')
-           </if>
-           <if test="storagePeriod!=null and storagePeriod!=''">
-               and b.storage_period like CONCAT('%',#{storagePeriod},'%')
-           </if>
-           <if test="boxNumber!=null and boxNumber!=''">
-               and b.box_number  like CONCAT('%',#{boxNumber},'%')
-           </if>
-
-           <if test="auditStatus!=null and auditStatus!=''">
-               and b.audit_status=#{auditStatus}
-           </if>
-           <if test="title!=null and title!=''">
-               and b.title=#{title}
-           </if>
-        </where>-->
         <where>
             b.deleted=0
         <if test="documentClassLevel!=null and documentClassLevel!=''">
@@ -173,33 +121,6 @@
         b.audit_time AS auditTime,b.file_url AS fileUrl,b.user_id   AS userId ,b.is_e_file AS isEFile ,b.update_time AS updateTime from(
         SELECT * FROM d_file_current_instruments a where a.id in(select dufp.file_id from d_user_file_permission dufp where dufp.user_id=#{uesrId} and dufp.audit_status=1
         and dufp.end_time>=now()) union select * from d_file_current_instruments c where c.user_id=#{uesrId}) b
-       <!-- <where>
-            <if test="responsiblePerson!=null and responsiblePerson!=''">
-                and b.responsible_person like  CONCAT('%',#{responsiblePerson},'%')
-            </if>
-            <if test="timeYear!=null and timeYear!=''">
-                and b.time_year  like CONCAT('%',#{timeYear},'%')
-            </if>
-            <if test="archivalCode!=null and archivalCode!=''">
-                and b.archival_code like CONCAT('%',#{archivalCode},'%')
-            </if>
-            <if test="storagePeriod!=null and storagePeriod!=''">
-                and b.storage_period like CONCAT('%',#{storagePeriod},'%')
-            </if>
-            <if test="boxNumber!=null and boxNumber!=''">
-                and b.box_number  like CONCAT('%',#{boxNumber},'%')
-            </if>
-            <if test="documentClassLevel!=null and documentClassLevel!=''">
-                and b.document_class_level  like CONCAT('%',#{documentClassLevel},'%')
-            </if>
-            <if test="auditStatus!=null and auditStatus!=''">
-                and b.audit_status=#{auditStatus}
-            </if>
-            <if test="title!=null and title!=''">
-                and b.title=#{title}
-            </if>
-        </where>-->
-
         <where>
             b.deleted=0
             <if test="documentClassLevel!=null and documentClassLevel!=''">
@@ -211,13 +132,13 @@
     </select>
 
     <select id="getLeftTreeParentNode" resultType="com.natian.entity.archives.CurrentInstrument">
-        select  distinct(d.time_year)   from d_file1  d  where d.time_year is  not null
+        select  distinct(d.time_year)   from d_file_current_instruments  d  where d.time_year is  not null
     </select>
     <select id="getLeftTreeSecondNode" resultType="com.natian.entity.archives.CurrentInstrument">
-        select   distinct d.time_year,d.storage_period  from  d_file1  d  where d.storage_period  is not null
+        select   distinct d.time_year,d.storage_period  from  d_file_current_instruments  d  where d.storage_period  is not null
     </select>
     <select id="getLeftTreeThirdNode" resultType="com.natian.entity.archives.CurrentInstrument">
-        select    distinct d.time_year,d.storage_period,d.box_number  from  d_file1  d  where d.box_number  is not null  and  d.box_number!=''
+        select    distinct d.time_year,d.storage_period,d.box_number  from  d_file_current_instruments  d  where d.box_number  is not null  and  d.box_number!=''
     </select>
 
 
@@ -289,9 +210,6 @@ and dufp.end_time>=now())
             b.deleted=0
             and    b.user_id  in(select   su.user_id   from  sys_user   su
             WHERE  dept_id=(select   dept_id  from  sys_user    su  where     su.user_id=#{userId}))
-            <!--<if test="documentClassLevel!=null and documentClassLevel!=''">
-                and b.document_class_level= #{documentClassLevel}
-            </if>-->
         </where>
         order by  b.create_time  desc
     </select>

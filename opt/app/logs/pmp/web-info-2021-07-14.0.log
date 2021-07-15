@@ -1,0 +1,423 @@
+2021-07-14 17:15:23.774 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.1.6.Final
+2021-07-14 17:15:24.359 [main] INFO  c.a.n.client.config.impl.LocalConfigInfoProcessor - LOCAL_SNAPSHOT_PATH:C:\Users\ZY\nacos\config
+2021-07-14 17:15:24.384 [main] INFO  com.alibaba.nacos.client.config.impl.Limiter - limitTime:5.0
+2021-07-14 17:15:24.474 [main] INFO  com.alibaba.nacos.client.config.utils.JVMUtil - isMultiInstance:false
+2021-07-14 17:15:24.505 [main] INFO  o.s.c.b.c.PropertySourceBootstrapConfiguration - Located property source: [BootstrapPropertySource {name='bootstrapProperties-archives-server-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-archives-server.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-archives-server,DEFAULT_GROUP'}]
+2021-07-14 17:15:24.557 [main] INFO  com.nantian.ArchaivesManageApplication - The following profiles are active: dev
+2021-07-14 17:15:25.237 [main] INFO  o.springframework.cloud.context.scope.GenericScope - BeanFactory id=818dad8e-a8b3-336d-ab40-5bade234df8c
+2021-07-14 17:15:25.508 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8015 (http)
+2021-07-14 17:15:25.515 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8015"]
+2021-07-14 17:15:25.515 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-07-14 17:15:25.515 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-07-14 17:15:25.631 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/archives] - Initializing Spring embedded WebApplicationContext
+2021-07-14 17:15:25.631 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1063 ms
+2021-07-14 17:15:26.894 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-07-14 17:15:26.901 [main] INFO  com.netflix.config.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-07-14 17:15:26.907 [main] INFO  com.netflix.config.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-07-14 17:15:26.945 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService 'Nacso-Watch-Task-Scheduler'
+2021-07-14 17:15:26.950 [main] INFO  com.alibaba.nacos.client.naming - initializer namespace from System Property :null
+2021-07-14 17:15:26.951 [main] INFO  com.alibaba.nacos.client.naming - initializer namespace from System Environment :null
+2021-07-14 17:15:26.951 [main] INFO  com.alibaba.nacos.client.naming - initializer namespace from System Property :null
+2021-07-14 17:15:27.373 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8015"]
+2021-07-14 17:15:27.389 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8015 (http) with context path '/archives'
+2021-07-14 17:15:27.392 [main] INFO  com.alibaba.nacos.client.naming - [BEAT] adding beat: {"cluster":"DEFAULT","ip":"172.21.4.62","metadata":{"preserved.register.source":"SPRING_CLOUD"},"period":5000,"port":8015,"scheduled":false,"serviceName":"DEFAULT_GROUP@@archives-server","stopped":false,"weight":1.0} to beat map.
+2021-07-14 17:15:27.449 [main] INFO  com.alibaba.nacos.client.naming - [REGISTER-SERVICE] public registering service DEFAULT_GROUP@@archives-server with instance: {"clusterName":"DEFAULT","enabled":true,"ephemeral":true,"healthy":true,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000,"ip":"172.21.4.62","ipDeleteTimeout":30000,"metadata":{"preserved.register.source":"SPRING_CLOUD"},"port":8015,"weight":1.0}
+2021-07-14 17:15:27.466 [main] INFO  c.a.cloud.nacos.registry.NacosServiceRegistry - nacos registry, DEFAULT_GROUP archives-server 172.21.4.62:8015 register finished
+2021-07-14 17:15:27.666 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2021-07-14 17:15:27.682 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 2 custom documentation plugin(s)
+2021-07-14 17:15:27.712 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2021-07-14 17:15:27.867 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateExamineUsingPOST_1
+2021-07-14 17:15:27.870 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getLeftTreeUsingGET_1
+2021-07-14 17:15:27.911 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2021-07-14 17:15:27.915 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: deleteArchivesUsingPOST_1
+2021-07-14 17:15:27.919 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getArchivesUsingGET_1
+2021-07-14 17:15:27.920 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getArchivesDetailUsingGET_1
+2021-07-14 17:15:27.921 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getArchivesListByUserUsingGET_1
+2021-07-14 17:15:27.929 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: saveArchivesUsingPOST_1
+2021-07-14 17:15:27.930 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateArchivesUsingPOST_1
+2021-07-14 17:15:27.930 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateExamineUsingPOST_2
+2021-07-14 17:15:27.932 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: deleteCurrentInstrumentsUsingPOST_1
+2021-07-14 17:15:27.933 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getAllListUsingGET_1
+2021-07-14 17:15:27.934 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getAllListByDayUsingGET_1
+2021-07-14 17:15:27.935 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getAllTotalUsingGET_1
+2021-07-14 17:15:27.936 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getCurrentInstrumentsUsingGET_1
+2021-07-14 17:15:27.937 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getCurrentInstrumentsDetailUsingGET_1
+2021-07-14 17:15:27.938 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getCurrentInstrumentsListByUserUsingGET_1
+2021-07-14 17:15:27.938 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getLeftTreeUsingGET_2
+2021-07-14 17:15:27.939 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getPermissionFileUsingGET_1
+2021-07-14 17:15:27.952 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: saveCurrentInstrumentsUsingPOST_1
+2021-07-14 17:15:27.953 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateClassNameberUsingGET_1
+2021-07-14 17:15:27.954 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateCurrentInstrumentsUsingPOST_1
+2021-07-14 17:15:27.954 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateExamineUsingPOST_3
+2021-07-14 17:15:27.955 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateIsFileUsingPOST_1
+2021-07-14 17:15:27.960 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: deleteDocumentTreeUsingPOST_1
+2021-07-14 17:15:27.961 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getLeftTreeUsingGET_3
+2021-07-14 17:15:27.963 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: saveDocumentTreeUsingPOST_1
+2021-07-14 17:15:27.963 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: selectDocumentDetailUsingGET_1
+2021-07-14 17:15:27.964 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateDocumentTreeUsingPOST_1
+2021-07-14 17:15:27.964 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getFileAttachmentListUsingGET_1
+2021-07-14 17:15:27.965 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: deleteFileUsingPOST_1
+2021-07-14 17:15:27.966 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: downloadFileUsingGET_1
+2021-07-14 17:15:27.966 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: fileOnlinePreviewUsingGET_1
+2021-07-14 17:15:27.967 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getFileUrlUsingGET_1
+2021-07-14 17:15:27.967 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: uploadFileUsingPOST_1
+2021-07-14 17:15:27.968 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getOperationListUsingGET_1
+2021-07-14 17:15:27.976 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: deleteUserFileUsingPOST_1
+2021-07-14 17:15:27.977 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: examineUserFileUsingPOST_1
+2021-07-14 17:15:27.979 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getUserFileListByUserUsingGET_1
+2021-07-14 17:15:27.983 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: saveUserFileUsingPOST_1
+2021-07-14 17:15:27.984 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateUserFileUsingPOST_1
+2021-07-14 17:15:27.985 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getFileIsPermissionUsingPOST_1
+2021-07-14 17:15:27.987 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: saveUserFilePermissionUsingPOST_1
+2021-07-14 17:15:27.987 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getWorkFlowUsingGET_1
+2021-07-14 17:15:27.988 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getWorkFlowMessageUsingGET_1
+2021-07-14 17:15:28.011 [main] INFO  com.nantian.ArchaivesManageApplication - Started ArchaivesManageApplication in 4.903 seconds (JVM running for 6.929)
+2021-07-14 17:15:28.014 [main] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - [fixed-localhost_8848] [subscribe] archives-server+DEFAULT_GROUP
+2021-07-14 17:15:28.015 [main] INFO  com.alibaba.nacos.client.config.impl.CacheData - [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=archives-server, group=DEFAULT_GROUP, cnt=1
+2021-07-14 17:15:28.015 [main] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - [fixed-localhost_8848] [subscribe] archives-server-dev.properties+DEFAULT_GROUP
+2021-07-14 17:15:28.015 [main] INFO  com.alibaba.nacos.client.config.impl.CacheData - [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=archives-server-dev.properties, group=DEFAULT_GROUP, cnt=1
+2021-07-14 17:15:28.015 [main] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - [fixed-localhost_8848] [subscribe] archives-server.properties+DEFAULT_GROUP
+2021-07-14 17:15:28.015 [main] INFO  com.alibaba.nacos.client.config.impl.CacheData - [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=archives-server.properties, group=DEFAULT_GROUP, cnt=1
+2021-07-14 17:15:28.028 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:15:57.734 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:16:27.242 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:16:56.755 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:17:26.272 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:17:55.787 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:18:25.308 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:18:54.825 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:19:07.308 [http-nio-8015-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/archives] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-07-14 17:19:07.309 [http-nio-8015-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2021-07-14 17:19:07.314 [http-nio-8015-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+2021-07-14 17:19:24.337 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:19:53.844 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:20:23.353 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:20:37.105 [http-nio-8015-exec-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-07-14 17:20:37.363 [http-nio-8015-exec-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-07-14 17:20:52.866 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:21:22.369 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:21:51.884 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:22:21.397 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:22:50.901 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:23:20.405 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:23:49.914 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:24:19.432 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:24:48.943 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:25:18.454 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:25:47.963 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:26:17.479 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:26:46.984 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:27:16.488 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:27:46.002 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:28:15.506 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:28:45.022 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:29:12.292 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Shutting down ExecutorService 'Nacso-Watch-Task-Scheduler'
+2021-07-14 17:29:12.293 [SpringContextShutdownHook] INFO  c.a.cloud.nacos.registry.NacosServiceRegistry - De-registering from Nacos Server now...
+2021-07-14 17:29:12.293 [SpringContextShutdownHook] INFO  com.alibaba.nacos.client.naming - [BEAT] removing beat: DEFAULT_GROUP@@archives-server:172.21.4.62:8015 from beat map.
+2021-07-14 17:29:12.294 [SpringContextShutdownHook] INFO  com.alibaba.nacos.client.naming - [DEREGISTER-SERVICE] public deregistering service DEFAULT_GROUP@@archives-server with instance: {"clusterName":"DEFAULT","enabled":true,"ephemeral":true,"healthy":true,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000,"instanceIdGenerator":"simple","ip":"172.21.4.62","ipDeleteTimeout":30000,"metadata":{},"port":8015,"weight":1.0}
+2021-07-14 17:29:12.300 [SpringContextShutdownHook] INFO  c.a.cloud.nacos.registry.NacosServiceRegistry - De-registration finished.
+2021-07-14 17:29:12.304 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2021-07-14 17:29:12.310 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2021-07-14 17:29:18.002 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.1.6.Final
+2021-07-14 17:29:18.559 [main] INFO  c.a.n.client.config.impl.LocalConfigInfoProcessor - LOCAL_SNAPSHOT_PATH:C:\Users\ZY\nacos\config
+2021-07-14 17:29:18.578 [main] INFO  com.alibaba.nacos.client.config.impl.Limiter - limitTime:5.0
+2021-07-14 17:29:18.596 [main] INFO  com.alibaba.nacos.client.config.utils.JVMUtil - isMultiInstance:false
+2021-07-14 17:29:18.617 [main] INFO  o.s.c.b.c.PropertySourceBootstrapConfiguration - Located property source: [BootstrapPropertySource {name='bootstrapProperties-archives-server-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-archives-server.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-archives-server,DEFAULT_GROUP'}]
+2021-07-14 17:29:18.658 [main] INFO  com.nantian.ArchaivesManageApplication - The following profiles are active: dev
+2021-07-14 17:29:19.257 [main] INFO  o.springframework.cloud.context.scope.GenericScope - BeanFactory id=818dad8e-a8b3-336d-ab40-5bade234df8c
+2021-07-14 17:29:19.491 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8015 (http)
+2021-07-14 17:29:19.499 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8015"]
+2021-07-14 17:29:19.500 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-07-14 17:29:19.500 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-07-14 17:29:19.628 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/archives] - Initializing Spring embedded WebApplicationContext
+2021-07-14 17:29:19.628 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 961 ms
+2021-07-14 17:29:20.770 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-07-14 17:29:20.779 [main] INFO  com.netflix.config.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-07-14 17:29:20.782 [main] INFO  com.netflix.config.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-07-14 17:29:20.818 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService 'Nacso-Watch-Task-Scheduler'
+2021-07-14 17:29:20.821 [main] INFO  com.alibaba.nacos.client.naming - initializer namespace from System Property :null
+2021-07-14 17:29:20.822 [main] INFO  com.alibaba.nacos.client.naming - initializer namespace from System Environment :null
+2021-07-14 17:29:20.822 [main] INFO  com.alibaba.nacos.client.naming - initializer namespace from System Property :null
+2021-07-14 17:29:21.212 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8015"]
+2021-07-14 17:29:21.230 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8015 (http) with context path '/archives'
+2021-07-14 17:29:21.233 [main] INFO  com.alibaba.nacos.client.naming - [BEAT] adding beat: {"cluster":"DEFAULT","ip":"172.21.4.62","metadata":{"preserved.register.source":"SPRING_CLOUD"},"period":5000,"port":8015,"scheduled":false,"serviceName":"DEFAULT_GROUP@@archives-server","stopped":false,"weight":1.0} to beat map.
+2021-07-14 17:29:21.310 [main] INFO  com.alibaba.nacos.client.naming - [REGISTER-SERVICE] public registering service DEFAULT_GROUP@@archives-server with instance: {"clusterName":"DEFAULT","enabled":true,"ephemeral":true,"healthy":true,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000,"ip":"172.21.4.62","ipDeleteTimeout":30000,"metadata":{"preserved.register.source":"SPRING_CLOUD"},"port":8015,"weight":1.0}
+2021-07-14 17:29:21.328 [main] INFO  c.a.cloud.nacos.registry.NacosServiceRegistry - nacos registry, DEFAULT_GROUP archives-server 172.21.4.62:8015 register finished
+2021-07-14 17:29:21.522 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2021-07-14 17:29:21.534 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 2 custom documentation plugin(s)
+2021-07-14 17:29:21.558 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2021-07-14 17:29:21.699 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateExamineUsingPOST_1
+2021-07-14 17:29:21.702 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getLeftTreeUsingGET_1
+2021-07-14 17:29:21.741 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2021-07-14 17:29:21.743 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: deleteArchivesUsingPOST_1
+2021-07-14 17:29:21.746 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getArchivesUsingGET_1
+2021-07-14 17:29:21.747 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getArchivesDetailUsingGET_1
+2021-07-14 17:29:21.748 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getArchivesListByUserUsingGET_1
+2021-07-14 17:29:21.755 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: saveArchivesUsingPOST_1
+2021-07-14 17:29:21.756 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateArchivesUsingPOST_1
+2021-07-14 17:29:21.756 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateExamineUsingPOST_2
+2021-07-14 17:29:21.758 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: deleteCurrentInstrumentsUsingPOST_1
+2021-07-14 17:29:21.758 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getAllListUsingGET_1
+2021-07-14 17:29:21.759 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getAllListByDayUsingGET_1
+2021-07-14 17:29:21.759 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getAllTotalUsingGET_1
+2021-07-14 17:29:21.760 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getCurrentInstrumentsUsingGET_1
+2021-07-14 17:29:21.761 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getCurrentInstrumentsDetailUsingGET_1
+2021-07-14 17:29:21.761 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getCurrentInstrumentsListByUserUsingGET_1
+2021-07-14 17:29:21.762 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getLeftTreeUsingGET_2
+2021-07-14 17:29:21.763 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getPermissionFileUsingGET_1
+2021-07-14 17:29:21.774 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: saveCurrentInstrumentsUsingPOST_1
+2021-07-14 17:29:21.774 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateClassNameberUsingGET_1
+2021-07-14 17:29:21.775 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateCurrentInstrumentsUsingPOST_1
+2021-07-14 17:29:21.776 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateExamineUsingPOST_3
+2021-07-14 17:29:21.777 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateIsFileUsingPOST_1
+2021-07-14 17:29:21.782 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: deleteDocumentTreeUsingPOST_1
+2021-07-14 17:29:21.782 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getLeftTreeUsingGET_3
+2021-07-14 17:29:21.784 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: saveDocumentTreeUsingPOST_1
+2021-07-14 17:29:21.785 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: selectDocumentDetailUsingGET_1
+2021-07-14 17:29:21.785 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateDocumentTreeUsingPOST_1
+2021-07-14 17:29:21.786 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getFileAttachmentListUsingGET_1
+2021-07-14 17:29:21.786 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: deleteFileUsingPOST_1
+2021-07-14 17:29:21.787 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: downloadFileUsingGET_1
+2021-07-14 17:29:21.787 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: fileOnlinePreviewUsingGET_1
+2021-07-14 17:29:21.788 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getFileUrlUsingGET_1
+2021-07-14 17:29:21.788 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: uploadFileUsingPOST_1
+2021-07-14 17:29:21.789 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getOperationListUsingGET_1
+2021-07-14 17:29:21.799 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: deleteUserFileUsingPOST_1
+2021-07-14 17:29:21.801 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: examineUserFileUsingPOST_1
+2021-07-14 17:29:21.802 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getUserFileListByUserUsingGET_1
+2021-07-14 17:29:21.805 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: saveUserFileUsingPOST_1
+2021-07-14 17:29:21.805 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateUserFileUsingPOST_1
+2021-07-14 17:29:21.806 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getFileIsPermissionUsingPOST_1
+2021-07-14 17:29:21.807 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: saveUserFilePermissionUsingPOST_1
+2021-07-14 17:29:21.808 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getWorkFlowUsingGET_1
+2021-07-14 17:29:21.809 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getWorkFlowMessageUsingGET_1
+2021-07-14 17:29:21.818 [main] INFO  com.nantian.ArchaivesManageApplication - Started ArchaivesManageApplication in 4.526 seconds (JVM running for 5.499)
+2021-07-14 17:29:21.822 [main] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - [fixed-localhost_8848] [subscribe] archives-server+DEFAULT_GROUP
+2021-07-14 17:29:21.822 [main] INFO  com.alibaba.nacos.client.config.impl.CacheData - [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=archives-server, group=DEFAULT_GROUP, cnt=1
+2021-07-14 17:29:21.823 [main] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - [fixed-localhost_8848] [subscribe] archives-server-dev.properties+DEFAULT_GROUP
+2021-07-14 17:29:21.823 [main] INFO  com.alibaba.nacos.client.config.impl.CacheData - [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=archives-server-dev.properties, group=DEFAULT_GROUP, cnt=1
+2021-07-14 17:29:21.823 [main] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - [fixed-localhost_8848] [subscribe] archives-server.properties+DEFAULT_GROUP
+2021-07-14 17:29:21.823 [main] INFO  com.alibaba.nacos.client.config.impl.CacheData - [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=archives-server.properties, group=DEFAULT_GROUP, cnt=1
+2021-07-14 17:29:21.831 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:29:23.496 [http-nio-8015-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/archives] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-07-14 17:29:23.496 [http-nio-8015-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2021-07-14 17:29:23.504 [http-nio-8015-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 8 ms
+2021-07-14 17:29:37.328 [http-nio-8015-exec-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-07-14 17:29:37.521 [http-nio-8015-exec-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-07-14 17:29:51.536 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:30:21.053 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:30:50.562 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:31:20.073 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:31:49.599 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:32:19.112 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:32:48.625 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:33:18.137 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:33:47.654 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:34:17.157 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:34:46.667 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:35:16.178 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:35:45.682 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:36:09.997 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Shutting down ExecutorService 'Nacso-Watch-Task-Scheduler'
+2021-07-14 17:36:09.998 [SpringContextShutdownHook] INFO  c.a.cloud.nacos.registry.NacosServiceRegistry - De-registering from Nacos Server now...
+2021-07-14 17:36:09.999 [SpringContextShutdownHook] INFO  com.alibaba.nacos.client.naming - [BEAT] removing beat: DEFAULT_GROUP@@archives-server:172.21.4.62:8015 from beat map.
+2021-07-14 17:36:09.999 [SpringContextShutdownHook] INFO  com.alibaba.nacos.client.naming - [DEREGISTER-SERVICE] public deregistering service DEFAULT_GROUP@@archives-server with instance: {"clusterName":"DEFAULT","enabled":true,"ephemeral":true,"healthy":true,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000,"instanceIdGenerator":"simple","ip":"172.21.4.62","ipDeleteTimeout":30000,"metadata":{},"port":8015,"weight":1.0}
+2021-07-14 17:36:10.005 [SpringContextShutdownHook] INFO  c.a.cloud.nacos.registry.NacosServiceRegistry - De-registration finished.
+2021-07-14 17:36:10.009 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2021-07-14 17:36:10.014 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2021-07-14 17:36:15.434 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.1.6.Final
+2021-07-14 17:36:16.161 [main] INFO  c.a.n.client.config.impl.LocalConfigInfoProcessor - LOCAL_SNAPSHOT_PATH:C:\Users\ZY\nacos\config
+2021-07-14 17:36:16.186 [main] INFO  com.alibaba.nacos.client.config.impl.Limiter - limitTime:5.0
+2021-07-14 17:36:16.205 [main] INFO  com.alibaba.nacos.client.config.utils.JVMUtil - isMultiInstance:false
+2021-07-14 17:36:16.215 [main] INFO  o.s.c.b.c.PropertySourceBootstrapConfiguration - Located property source: [BootstrapPropertySource {name='bootstrapProperties-archives-server-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-archives-server.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-archives-server,DEFAULT_GROUP'}]
+2021-07-14 17:36:16.254 [main] INFO  com.nantian.ArchaivesManageApplication - The following profiles are active: dev
+2021-07-14 17:36:16.844 [main] INFO  o.springframework.cloud.context.scope.GenericScope - BeanFactory id=818dad8e-a8b3-336d-ab40-5bade234df8c
+2021-07-14 17:36:17.066 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8015 (http)
+2021-07-14 17:36:17.082 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8015"]
+2021-07-14 17:36:17.082 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-07-14 17:36:17.083 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-07-14 17:36:17.188 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/archives] - Initializing Spring embedded WebApplicationContext
+2021-07-14 17:36:17.188 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 923 ms
+2021-07-14 17:36:18.328 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-07-14 17:36:18.335 [main] INFO  com.netflix.config.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-07-14 17:36:18.338 [main] INFO  com.netflix.config.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-07-14 17:36:18.375 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService 'Nacso-Watch-Task-Scheduler'
+2021-07-14 17:36:18.381 [main] INFO  com.alibaba.nacos.client.naming - initializer namespace from System Property :null
+2021-07-14 17:36:18.382 [main] INFO  com.alibaba.nacos.client.naming - initializer namespace from System Environment :null
+2021-07-14 17:36:18.382 [main] INFO  com.alibaba.nacos.client.naming - initializer namespace from System Property :null
+2021-07-14 17:36:18.765 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8015"]
+2021-07-14 17:36:18.781 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8015 (http) with context path '/archives'
+2021-07-14 17:36:18.784 [main] INFO  com.alibaba.nacos.client.naming - [BEAT] adding beat: {"cluster":"DEFAULT","ip":"172.21.4.62","metadata":{"preserved.register.source":"SPRING_CLOUD"},"period":5000,"port":8015,"scheduled":false,"serviceName":"DEFAULT_GROUP@@archives-server","stopped":false,"weight":1.0} to beat map.
+2021-07-14 17:36:18.848 [main] INFO  com.alibaba.nacos.client.naming - [REGISTER-SERVICE] public registering service DEFAULT_GROUP@@archives-server with instance: {"clusterName":"DEFAULT","enabled":true,"ephemeral":true,"healthy":true,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000,"ip":"172.21.4.62","ipDeleteTimeout":30000,"metadata":{"preserved.register.source":"SPRING_CLOUD"},"port":8015,"weight":1.0}
+2021-07-14 17:36:18.864 [main] INFO  c.a.cloud.nacos.registry.NacosServiceRegistry - nacos registry, DEFAULT_GROUP archives-server 172.21.4.62:8015 register finished
+2021-07-14 17:36:19.055 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2021-07-14 17:36:19.068 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 2 custom documentation plugin(s)
+2021-07-14 17:36:19.091 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2021-07-14 17:36:19.228 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateExamineUsingPOST_1
+2021-07-14 17:36:19.231 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getLeftTreeUsingGET_1
+2021-07-14 17:36:19.268 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2021-07-14 17:36:19.271 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: deleteArchivesUsingPOST_1
+2021-07-14 17:36:19.274 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getArchivesUsingGET_1
+2021-07-14 17:36:19.275 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getArchivesDetailUsingGET_1
+2021-07-14 17:36:19.276 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getArchivesListByUserUsingGET_1
+2021-07-14 17:36:19.283 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: saveArchivesUsingPOST_1
+2021-07-14 17:36:19.284 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateArchivesUsingPOST_1
+2021-07-14 17:36:19.284 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateExamineUsingPOST_2
+2021-07-14 17:36:19.286 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: deleteCurrentInstrumentsUsingPOST_1
+2021-07-14 17:36:19.287 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getAllListUsingGET_1
+2021-07-14 17:36:19.287 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getAllListByDayUsingGET_1
+2021-07-14 17:36:19.288 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getAllTotalUsingGET_1
+2021-07-14 17:36:19.288 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getCurrentInstrumentsUsingGET_1
+2021-07-14 17:36:19.289 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getCurrentInstrumentsDetailUsingGET_1
+2021-07-14 17:36:19.290 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getCurrentInstrumentsListByUserUsingGET_1
+2021-07-14 17:36:19.290 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getLeftTreeUsingGET_2
+2021-07-14 17:36:19.291 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getPermissionFileUsingGET_1
+2021-07-14 17:36:19.303 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: saveCurrentInstrumentsUsingPOST_1
+2021-07-14 17:36:19.304 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateClassNameberUsingGET_1
+2021-07-14 17:36:19.305 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateCurrentInstrumentsUsingPOST_1
+2021-07-14 17:36:19.306 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateExamineUsingPOST_3
+2021-07-14 17:36:19.307 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateIsFileUsingPOST_1
+2021-07-14 17:36:19.311 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: deleteDocumentTreeUsingPOST_1
+2021-07-14 17:36:19.312 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getLeftTreeUsingGET_3
+2021-07-14 17:36:19.314 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: saveDocumentTreeUsingPOST_1
+2021-07-14 17:36:19.314 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: selectDocumentDetailUsingGET_1
+2021-07-14 17:36:19.315 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateDocumentTreeUsingPOST_1
+2021-07-14 17:36:19.316 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getFileAttachmentListUsingGET_1
+2021-07-14 17:36:19.316 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: deleteFileUsingPOST_1
+2021-07-14 17:36:19.317 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: downloadFileUsingGET_1
+2021-07-14 17:36:19.317 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: fileOnlinePreviewUsingGET_1
+2021-07-14 17:36:19.318 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getFileUrlUsingGET_1
+2021-07-14 17:36:19.318 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: uploadFileUsingPOST_1
+2021-07-14 17:36:19.319 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getOperationListUsingGET_1
+2021-07-14 17:36:19.327 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: deleteUserFileUsingPOST_1
+2021-07-14 17:36:19.328 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: examineUserFileUsingPOST_1
+2021-07-14 17:36:19.330 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getUserFileListByUserUsingGET_1
+2021-07-14 17:36:19.333 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: saveUserFileUsingPOST_1
+2021-07-14 17:36:19.333 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateUserFileUsingPOST_1
+2021-07-14 17:36:19.334 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getFileIsPermissionUsingPOST_1
+2021-07-14 17:36:19.335 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: saveUserFilePermissionUsingPOST_1
+2021-07-14 17:36:19.336 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getWorkFlowUsingGET_1
+2021-07-14 17:36:19.337 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getWorkFlowMessageUsingGET_1
+2021-07-14 17:36:19.344 [main] INFO  com.nantian.ArchaivesManageApplication - Started ArchaivesManageApplication in 4.528 seconds (JVM running for 5.37)
+2021-07-14 17:36:19.347 [main] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - [fixed-localhost_8848] [subscribe] archives-server+DEFAULT_GROUP
+2021-07-14 17:36:19.347 [main] INFO  com.alibaba.nacos.client.config.impl.CacheData - [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=archives-server, group=DEFAULT_GROUP, cnt=1
+2021-07-14 17:36:19.347 [main] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - [fixed-localhost_8848] [subscribe] archives-server-dev.properties+DEFAULT_GROUP
+2021-07-14 17:36:19.347 [main] INFO  com.alibaba.nacos.client.config.impl.CacheData - [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=archives-server-dev.properties, group=DEFAULT_GROUP, cnt=1
+2021-07-14 17:36:19.348 [main] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - [fixed-localhost_8848] [subscribe] archives-server.properties+DEFAULT_GROUP
+2021-07-14 17:36:19.348 [main] INFO  com.alibaba.nacos.client.config.impl.CacheData - [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=archives-server.properties, group=DEFAULT_GROUP, cnt=1
+2021-07-14 17:36:19.360 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:36:49.062 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:36:58.459 [http-nio-8015-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/archives] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-07-14 17:36:58.459 [http-nio-8015-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2021-07-14 17:36:58.463 [http-nio-8015-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2021-07-14 17:36:58.498 [http-nio-8015-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-07-14 17:36:58.693 [http-nio-8015-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-07-14 17:37:18.575 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:37:48.081 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:38:17.586 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:38:47.091 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:39:16.596 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:39:45.407 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Shutting down ExecutorService 'Nacso-Watch-Task-Scheduler'
+2021-07-14 17:39:45.408 [SpringContextShutdownHook] INFO  c.a.cloud.nacos.registry.NacosServiceRegistry - De-registering from Nacos Server now...
+2021-07-14 17:39:45.408 [SpringContextShutdownHook] INFO  com.alibaba.nacos.client.naming - [BEAT] removing beat: DEFAULT_GROUP@@archives-server:172.21.4.62:8015 from beat map.
+2021-07-14 17:39:45.408 [SpringContextShutdownHook] INFO  com.alibaba.nacos.client.naming - [DEREGISTER-SERVICE] public deregistering service DEFAULT_GROUP@@archives-server with instance: {"clusterName":"DEFAULT","enabled":true,"ephemeral":true,"healthy":true,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000,"instanceIdGenerator":"simple","ip":"172.21.4.62","ipDeleteTimeout":30000,"metadata":{},"port":8015,"weight":1.0}
+2021-07-14 17:39:45.421 [SpringContextShutdownHook] INFO  c.a.cloud.nacos.registry.NacosServiceRegistry - De-registration finished.
+2021-07-14 17:39:45.424 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2021-07-14 17:39:45.430 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2021-07-14 17:39:50.604 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.1.6.Final
+2021-07-14 17:39:51.189 [main] INFO  c.a.n.client.config.impl.LocalConfigInfoProcessor - LOCAL_SNAPSHOT_PATH:C:\Users\ZY\nacos\config
+2021-07-14 17:39:51.213 [main] INFO  com.alibaba.nacos.client.config.impl.Limiter - limitTime:5.0
+2021-07-14 17:39:51.231 [main] INFO  com.alibaba.nacos.client.config.utils.JVMUtil - isMultiInstance:false
+2021-07-14 17:39:51.242 [main] INFO  o.s.c.b.c.PropertySourceBootstrapConfiguration - Located property source: [BootstrapPropertySource {name='bootstrapProperties-archives-server-dev.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-archives-server.properties,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-archives-server,DEFAULT_GROUP'}]
+2021-07-14 17:39:51.278 [main] INFO  com.nantian.ArchaivesManageApplication - The following profiles are active: dev
+2021-07-14 17:39:51.898 [main] INFO  o.springframework.cloud.context.scope.GenericScope - BeanFactory id=818dad8e-a8b3-336d-ab40-5bade234df8c
+2021-07-14 17:39:52.126 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8015 (http)
+2021-07-14 17:39:52.133 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8015"]
+2021-07-14 17:39:52.133 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-07-14 17:39:52.133 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-07-14 17:39:52.265 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/archives] - Initializing Spring embedded WebApplicationContext
+2021-07-14 17:39:52.265 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 978 ms
+2021-07-14 17:39:53.421 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-07-14 17:39:53.429 [main] INFO  com.netflix.config.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-07-14 17:39:53.432 [main] INFO  com.netflix.config.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-07-14 17:39:53.467 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService 'Nacso-Watch-Task-Scheduler'
+2021-07-14 17:39:53.471 [main] INFO  com.alibaba.nacos.client.naming - initializer namespace from System Property :null
+2021-07-14 17:39:53.472 [main] INFO  com.alibaba.nacos.client.naming - initializer namespace from System Environment :null
+2021-07-14 17:39:53.472 [main] INFO  com.alibaba.nacos.client.naming - initializer namespace from System Property :null
+2021-07-14 17:39:53.996 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8015"]
+2021-07-14 17:39:54.012 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8015 (http) with context path '/archives'
+2021-07-14 17:39:54.014 [main] INFO  com.alibaba.nacos.client.naming - [BEAT] adding beat: {"cluster":"DEFAULT","ip":"172.21.4.62","metadata":{"preserved.register.source":"SPRING_CLOUD"},"period":5000,"port":8015,"scheduled":false,"serviceName":"DEFAULT_GROUP@@archives-server","stopped":false,"weight":1.0} to beat map.
+2021-07-14 17:39:54.064 [main] INFO  com.alibaba.nacos.client.naming - [REGISTER-SERVICE] public registering service DEFAULT_GROUP@@archives-server with instance: {"clusterName":"DEFAULT","enabled":true,"ephemeral":true,"healthy":true,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000,"ip":"172.21.4.62","ipDeleteTimeout":30000,"metadata":{"preserved.register.source":"SPRING_CLOUD"},"port":8015,"weight":1.0}
+2021-07-14 17:39:54.085 [main] INFO  c.a.cloud.nacos.registry.NacosServiceRegistry - nacos registry, DEFAULT_GROUP archives-server 172.21.4.62:8015 register finished
+2021-07-14 17:39:54.271 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2021-07-14 17:39:54.283 [main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 2 custom documentation plugin(s)
+2021-07-14 17:39:54.306 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2021-07-14 17:39:54.444 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateExamineUsingPOST_1
+2021-07-14 17:39:54.447 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getLeftTreeUsingGET_1
+2021-07-14 17:39:54.485 [main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2021-07-14 17:39:54.488 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: deleteArchivesUsingPOST_1
+2021-07-14 17:39:54.491 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getArchivesUsingGET_1
+2021-07-14 17:39:54.491 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getArchivesDetailUsingGET_1
+2021-07-14 17:39:54.493 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getArchivesListByUserUsingGET_1
+2021-07-14 17:39:54.500 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: saveArchivesUsingPOST_1
+2021-07-14 17:39:54.500 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateArchivesUsingPOST_1
+2021-07-14 17:39:54.501 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateExamineUsingPOST_2
+2021-07-14 17:39:54.502 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: deleteCurrentInstrumentsUsingPOST_1
+2021-07-14 17:39:54.503 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getAllListUsingGET_1
+2021-07-14 17:39:54.504 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getAllListByDayUsingGET_1
+2021-07-14 17:39:54.504 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getAllTotalUsingGET_1
+2021-07-14 17:39:54.505 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getCurrentInstrumentsUsingGET_1
+2021-07-14 17:39:54.505 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getCurrentInstrumentsDetailUsingGET_1
+2021-07-14 17:39:54.507 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getCurrentInstrumentsListByUserUsingGET_1
+2021-07-14 17:39:54.507 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getLeftTreeUsingGET_2
+2021-07-14 17:39:54.508 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getPermissionFileUsingGET_1
+2021-07-14 17:39:54.521 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: saveCurrentInstrumentsUsingPOST_1
+2021-07-14 17:39:54.522 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateClassNameberUsingGET_1
+2021-07-14 17:39:54.522 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateCurrentInstrumentsUsingPOST_1
+2021-07-14 17:39:54.524 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateExamineUsingPOST_3
+2021-07-14 17:39:54.524 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateIsFileUsingPOST_1
+2021-07-14 17:39:54.529 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: deleteDocumentTreeUsingPOST_1
+2021-07-14 17:39:54.530 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getLeftTreeUsingGET_3
+2021-07-14 17:39:54.532 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: saveDocumentTreeUsingPOST_1
+2021-07-14 17:39:54.532 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: selectDocumentDetailUsingGET_1
+2021-07-14 17:39:54.533 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateDocumentTreeUsingPOST_1
+2021-07-14 17:39:54.533 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getFileAttachmentListUsingGET_1
+2021-07-14 17:39:54.534 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: deleteFileUsingPOST_1
+2021-07-14 17:39:54.535 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: downloadFileUsingGET_1
+2021-07-14 17:39:54.535 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: fileOnlinePreviewUsingGET_1
+2021-07-14 17:39:54.535 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getFileUrlUsingGET_1
+2021-07-14 17:39:54.536 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: uploadFileUsingPOST_1
+2021-07-14 17:39:54.537 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getOperationListUsingGET_1
+2021-07-14 17:39:54.547 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: deleteUserFileUsingPOST_1
+2021-07-14 17:39:54.548 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: examineUserFileUsingPOST_1
+2021-07-14 17:39:54.549 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getUserFileListByUserUsingGET_1
+2021-07-14 17:39:54.552 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: saveUserFileUsingPOST_1
+2021-07-14 17:39:54.553 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: updateUserFileUsingPOST_1
+2021-07-14 17:39:54.553 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getFileIsPermissionUsingPOST_1
+2021-07-14 17:39:54.555 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: saveUserFilePermissionUsingPOST_1
+2021-07-14 17:39:54.556 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getWorkFlowUsingGET_1
+2021-07-14 17:39:54.557 [main] INFO  s.d.s.w.r.operation.CachingOperationNameGenerator - Generating unique operation named: getWorkFlowMessageUsingGET_1
+2021-07-14 17:39:54.565 [main] INFO  com.nantian.ArchaivesManageApplication - Started ArchaivesManageApplication in 4.618 seconds (JVM running for 5.463)
+2021-07-14 17:39:54.568 [main] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - [fixed-localhost_8848] [subscribe] archives-server+DEFAULT_GROUP
+2021-07-14 17:39:54.569 [main] INFO  com.alibaba.nacos.client.config.impl.CacheData - [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=archives-server, group=DEFAULT_GROUP, cnt=1
+2021-07-14 17:39:54.569 [main] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - [fixed-localhost_8848] [subscribe] archives-server-dev.properties+DEFAULT_GROUP
+2021-07-14 17:39:54.569 [main] INFO  com.alibaba.nacos.client.config.impl.CacheData - [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=archives-server-dev.properties, group=DEFAULT_GROUP, cnt=1
+2021-07-14 17:39:54.569 [main] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - [fixed-localhost_8848] [subscribe] archives-server.properties+DEFAULT_GROUP
+2021-07-14 17:39:54.569 [main] INFO  com.alibaba.nacos.client.config.impl.CacheData - [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=archives-server.properties, group=DEFAULT_GROUP, cnt=1
+2021-07-14 17:39:54.573 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:39:56.691 [http-nio-8015-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/archives] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-07-14 17:39:56.691 [http-nio-8015-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2021-07-14 17:39:56.700 [http-nio-8015-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 9 ms
+2021-07-14 17:40:19.629 [http-nio-8015-exec-6] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-07-14 17:40:19.835 [http-nio-8015-exec-6] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-07-14 17:40:24.283 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:40:53.801 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:41:23.313 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:41:52.817 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:42:22.323 [com.alibaba.nacos.client.Worker.longPolling.fixed-localhost_8848] INFO  com.alibaba.nacos.client.config.impl.ClientWorker - get changedGroupKeys:[]
+2021-07-14 17:42:28.171 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Shutting down ExecutorService 'Nacso-Watch-Task-Scheduler'
+2021-07-14 17:42:28.172 [SpringContextShutdownHook] INFO  c.a.cloud.nacos.registry.NacosServiceRegistry - De-registering from Nacos Server now...
+2021-07-14 17:42:28.172 [SpringContextShutdownHook] INFO  com.alibaba.nacos.client.naming - [BEAT] removing beat: DEFAULT_GROUP@@archives-server:172.21.4.62:8015 from beat map.
+2021-07-14 17:42:28.172 [SpringContextShutdownHook] INFO  com.alibaba.nacos.client.naming - [DEREGISTER-SERVICE] public deregistering service DEFAULT_GROUP@@archives-server with instance: {"clusterName":"DEFAULT","enabled":true,"ephemeral":true,"healthy":true,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000,"instanceIdGenerator":"simple","ip":"172.21.4.62","ipDeleteTimeout":30000,"metadata":{},"port":8015,"weight":1.0}
+2021-07-14 17:42:28.183 [SpringContextShutdownHook] INFO  c.a.cloud.nacos.registry.NacosServiceRegistry - De-registration finished.
+2021-07-14 17:42:28.187 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2021-07-14 17:42:28.193 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

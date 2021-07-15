@@ -12,6 +12,6 @@ import java.util.List;
  * @date 2021/7/7 14:18
  * @Description:
  */
-public interface FileAttachmentService  extends IService<FileAttachment> {
+public interface FileAttachmentService extends IService<FileAttachment> {
     List<FileAttachment> getFileAttachmentList(String archivesId);
 }

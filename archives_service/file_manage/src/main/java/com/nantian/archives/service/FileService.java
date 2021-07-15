@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.net.UnknownHostException;
 import java.util.HashMap;
 
-public interface FileService  extends IService<CurrentInstrument> {
+public interface FileService extends IService<CurrentInstrument> {
 
-//    public  String    fileUpload(MultipartFile [] multipartFiles, HttpServletRequest  request);
-    public HashMap<String,Object> fileUpload(MultipartFile multipartFile, HttpServletRequest  request) throws UnknownHostException;
+    //    public  String    fileUpload(MultipartFile [] multipartFiles, HttpServletRequest  request);
+    public HashMap<String, Object> fileUpload(MultipartFile multipartFile, HttpServletRequest request) throws UnknownHostException;
 
-    public   void     downloadFile(String fileId,HttpServletRequest  request,HttpServletResponse  response);
+    public void downloadFile(String fileId, HttpServletRequest request, HttpServletResponse response);
 
-    public   int   deleteFile(String   fileId);
+    public int deleteFile(String fileId);
 
 //    public   void fileOnlinePreview(String fileId,HttpServletResponse response) throws UnknownHostException;
 }

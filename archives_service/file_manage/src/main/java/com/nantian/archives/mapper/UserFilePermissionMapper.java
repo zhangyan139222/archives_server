@@ -17,6 +17,6 @@ import java.util.List;
  * @Description:
  */
 @Mapper
-public interface UserFilePermissionMapper  extends BaseMapper<UserFilePermission> {
+public interface UserFilePermissionMapper extends BaseMapper<UserFilePermission> {
     Integer getFileIsPermission(@Param("fileId") String fileId);
 }

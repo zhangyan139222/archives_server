@@ -25,19 +25,17 @@ public class CorsConfiguration extends WebMvcConfigurationSupport {
 
     /**
      * swagger-ui.html  替换  doc.html
+     *
      * @param registry
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         String os = System.getProperty("os.name");
         if (os.toLowerCase().startsWith("win")) {  //如果是Windows系统
-//            registry.addResourceHandler("/resources/upload/**").addResourceLocations("file:F:/resources/upload/");
-            registry.addResourceHandler(virtualPath+"**").addResourceLocations("file:"+winStorageRootFolder);
-        }else{
-            registry.addResourceHandler(virtualPath+"**").addResourceLocations("file:"+linStorageRootFolder);
+            registry.addResourceHandler(virtualPath + "**").addResourceLocations("file:" + winStorageRootFolder);
+        } else {
+            registry.addResourceHandler(virtualPath + "**").addResourceLocations("file:" + linStorageRootFolder);
         }
-//        registry.addResourceHandler("/resources/upload/**").addResourceLocations("file:F:/resources/upload/");
-//        registry.addResourceHandler(virtualPath).addResourceLocations("file:"+storageRootFolder);
         registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
         registry.addResourceHandler("doc.html").addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");

@@ -12,6 +12,6 @@ import java.util.List;
  * @date 2021/7/6 10:20
  * @Description:
  */
-public interface FileOperationLoggingService   extends IService<FileOperationLogging> {
-    List<FileOperationLogging> getOperationList( String fileId);
+public interface FileOperationLoggingService extends IService<FileOperationLogging> {
+    List<FileOperationLogging> getOperationList(String fileId);
 }

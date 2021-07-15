@@ -8,13 +8,13 @@ spring:
       discovery:
          ip: 172.21.4.62
 #          server-addr: localhost:8848
-#         server-addr: 172.21.4.62:8848
-      server-addr: 172.17.0.1:8848
+         server-addr: 172.21.4.62:8848
+#      server-addr: 172.17.0.1:8848
   datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
 #        url: jdbc:mysql://localhost:3306/file_manage?serverTimezone=GMT%2B8
-#        url: jdbc:mysql://172.21.4.62:3306/file_manage?serverTimezone=GMT%2B8
-        url: jdbc:mysql://172.17.0.1:3306/file_manage?serverTimezone=GMT%2B8
+        url: jdbc:mysql://172.21.4.62:3306/file_manage?serverTimezone=GMT%2B8
+#        url: jdbc:mysql://172.17.0.1:3306/file_manage?serverTimezone=GMT%2B8
         username: root
         password: root
   #文件上传路径

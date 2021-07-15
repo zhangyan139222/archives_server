@@ -32,12 +32,12 @@ public class CurrentInstrumentsServiceImpl   extends ServiceImpl<CurrentInstrume
     @Resource
     private FileAttachmentMapper fileAttachmentMapper;
 
+
     /**
-     * 获取所有的数据（组合条件+数据分页）
-     *
-     * @param
+     * 查询已经归档的数据
      * @param page
      * @param size
+     * @param documentClassLevel
      * @return
      */
     @Override
@@ -52,16 +52,18 @@ public class CurrentInstrumentsServiceImpl   extends ServiceImpl<CurrentInstrume
         return currentInstrumentsIPage;
     }
 
+
     /**
-     * 获取所有的数据（组合条件+数据分页）
-     *
-     * @param
+     * 根据用户获取所有的数据（组合条件+数据分页）
      * @param page
      * @param size
+     * @param userId
+     * @param documentClassLevel
+     * @param auditStatus
      * @return
      */
     @Override
-    public Map<String, Object> getCurrentInstrumentListByUser(Integer page, Integer size, String userId, String documentClassLevel,  String auditStatus) {
+    public Map<String, Object> getCurrentInstrumentListByUser(Integer page, Integer size, String userId, String documentClassLevel, String auditStatus) {
         IPage<CurrentInstrument> iPage = null;
         Page<CurrentInstrument> pages = null;
         List<CurrentInstrument> currentInstruments = null;
@@ -70,14 +72,13 @@ public class CurrentInstrumentsServiceImpl   extends ServiceImpl<CurrentInstrume
             pages = new Page<>(page, size);
         }
         User user = userMapper.selectById(userId);
-        String applyUser=null;
         if (user.getLevel() != null && user.getLevel() == 0) {    //超级管理员（档案处管理员)获取所有的数据
             QueryWrapper<CurrentInstrument> queryWrapper = new QueryWrapper<>();
             if (StringUtils.isNotEmpty(documentClassLevel)) {
-                queryWrapper.likeRight("document_class_level", documentClassLevel);
+                queryWrapper.eq("document_class_level", documentClassLevel);
             }
             if (StringUtils.isNotEmpty(auditStatus)) {
-                queryWrapper.likeRight("audit_status", auditStatus);
+                queryWrapper.eq("audit_status", auditStatus);
             }
             queryWrapper.orderByDesc("create_time");
 
@@ -85,7 +86,7 @@ public class CurrentInstrumentsServiceImpl   extends ServiceImpl<CurrentInstrume
                 currentInstruments = currentInstrumentsMapper.getAllListByAdmin(documentClassLevel);
                 map.put("iPages", currentInstruments);
             } else {
-                iPage = currentInstrumentsMapper.getAllListOfPageByAdmin(pages, documentClassLevel,applyUser,null);
+                iPage = currentInstrumentsMapper.getAllListOfPageByAdmin(pages, documentClassLevel, null, null);
                 map.put("iPages", iPage);
             }
         } else if (user.getLevel() != null && user.getLevel() == 1) {       //其他各处室管理员
@@ -105,7 +106,7 @@ public class CurrentInstrumentsServiceImpl   extends ServiceImpl<CurrentInstrume
 
             } else {
                 try {
-                    iPage = currentInstrumentsMapper.getAllListOfPageByUser(pages, userId, documentClassLevel,applyUser, auditStatus);
+                    iPage = currentInstrumentsMapper.getAllListOfPageByUser(pages, userId, documentClassLevel, null, auditStatus);
                     map.put("iPages", iPage);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -209,19 +210,28 @@ public class CurrentInstrumentsServiceImpl   extends ServiceImpl<CurrentInstrume
 
     }
 
-    @Override
-    public CurrentInstrument getCurrentInstrumentsDetail(String id,String permissionId) {
+    /**
+     * 查看档案归档详情，并保存档案归档日志
+     * @param id
+     * @param permissionId
+     * @return
+     */
 
+    @Override
+    @Transactional
+    public CurrentInstrument getCurrentInstrumentsDetail(String id, String permissionId) {
         CurrentInstrument currentInstrument = currentInstrumentsMapper.getCurrentInstrumentsDetail(id);
-        //新增档案归档日志
-        //更新查档状态
-        UserFile  userFile=new UserFile();
+        //如果档案归档数据已查看，更新查档状态
+        UserFile userFile = new UserFile();
         userFile.setId(permissionId);
         userFile.setAuditStatus(4);
         userFileMapper.updateById(userFile);
+
+        UserFile userFile1 = userFileMapper.selectById(permissionId);
+        //新增档案归档日志
         FileOperationLogging fileOperationLogging = new FileOperationLogging();
         fileOperationLogging.setFileId(permissionId);
-        fileOperationLogging.setUserId(currentInstrument.getUserId());
+        fileOperationLogging.setUserId(userFile1.getUserId());
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
         fileOperationLogging.setFinishTime(simpleDateFormat.format(new Date()));
         fileOperationLogging.setOperName("查看档案归档数据详情");
@@ -240,11 +250,11 @@ public class CurrentInstrumentsServiceImpl   extends ServiceImpl<CurrentInstrume
     @Override
     @Transactional
     public boolean saveCurrentInstruments(CurrentInstrument currentInstrument) {
-        boolean  flag=false;
+        boolean flag = false;
         currentInstrumentsMapper.insert(currentInstrument);
         //新增电子档案附件
         List<FileAttachment> fileAttachmentList = currentInstrument.getFileAttachmentList();
-        if(fileAttachmentList!=null) {    //有电子档案的才需要新增附件
+        if (fileAttachmentList != null) {    //有电子档案的才需要新增附件
             for (FileAttachment fileAttachment : fileAttachmentList) {
                 fileAttachment.setArchivesId(currentInstrument.getId());
                 fileAttachmentMapper.insert(fileAttachment);
@@ -259,196 +269,220 @@ public class CurrentInstrumentsServiceImpl   extends ServiceImpl<CurrentInstrume
         fileOperationLogging.setOperName("新增档案归档数据");
         fileOperationLogging.setOperType(1);
         fileOperationLoggingMapper.insert(fileOperationLogging);
-        flag=true;
+        flag = true;
         return flag;
     }
+
+    /**
+     * 修改档案归档数据并保存日志
+     * @param currentInstrument
+     * @return
+     */
 
     @Override
     @Transactional
     public boolean updateCurrentInstruments(CurrentInstrument currentInstrument) {
-           boolean  flag=false;
-            CurrentInstrument byId = currentInstrumentsMapper.selectById(currentInstrument.getId());
-            currentInstrument.setVersion(byId.getVersion());
-            if (byId.getAuditStatus() == 2) {   //对于归档数据审核不通过，修改后重新更新审核状态
-                currentInstrument.setAuditStatus(0);
+        boolean flag = false;
+        CurrentInstrument byId = currentInstrumentsMapper.selectById(currentInstrument.getId());
+        currentInstrument.setVersion(byId.getVersion());
+        if (byId.getAuditStatus() == 2) {   //对于归档数据审核不通过，修改后重新更新审核状态
+            currentInstrument.setAuditStatus(0);
+        }
+        currentInstrumentsMapper.updateById(currentInstrument);
+        //修改电子档案附件
+        List<FileAttachment> fileAttachmentList = currentInstrument.getFileAttachmentList();
+        if (fileAttachmentList != null) {    //电子档案可能为空
+            for (FileAttachment fileAttachment : fileAttachmentList) {
+                fileAttachment.setArchivesId(currentInstrument.getId());
+                fileAttachmentMapper.insert(fileAttachment);
             }
-            currentInstrumentsMapper.updateById(currentInstrument);
-            //修改电子档案附件
-            List<FileAttachment> fileAttachmentList = currentInstrument.getFileAttachmentList();
-            if(fileAttachmentList!=null) {    //电子档案可能为空
-                for (FileAttachment fileAttachment : fileAttachmentList) {
-                    fileAttachment.setArchivesId(currentInstrument.getId());
-                    fileAttachmentMapper.insert(fileAttachment);
-                }
-            }
-            //新增档案归档日志
-            FileOperationLogging fileOperationLogging = new FileOperationLogging();
-            fileOperationLogging.setFileId(currentInstrument.getId());
-            fileOperationLogging.setUserId(currentInstrument.getUserId());
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
-            fileOperationLogging.setFinishTime(simpleDateFormat.format(new Date()));
-            fileOperationLogging.setOperName("修改档案归档数据");
-            fileOperationLogging.setOperType(1);
-            fileOperationLoggingMapper.insert(fileOperationLogging);
-            flag=true;
-            return flag;
+        }
+        //新增档案归档日志
+        FileOperationLogging fileOperationLogging = new FileOperationLogging();
+        fileOperationLogging.setFileId(currentInstrument.getId());
+        fileOperationLogging.setUserId(currentInstrument.getUserId());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+        fileOperationLogging.setFinishTime(simpleDateFormat.format(new Date()));
+        fileOperationLogging.setOperName("修改档案归档数据");
+        fileOperationLogging.setOperType(1);
+        fileOperationLoggingMapper.insert(fileOperationLogging);
+        flag = true;
+        return flag;
 
 
     }
 
+    /**
+     * 删除归档数据，并保存日志
+     * @param id
+     * @param userId
+     * @return
+     */
     @Override
     @Transactional
     public boolean deleteCurrentInstruments(String id, String userId) {
-            boolean  flag=false;
-            currentInstrumentsMapper.deleteById(id);
-            FileOperationLogging fileOperationLogging = new FileOperationLogging();
-            fileOperationLogging.setFileId(id);
-            fileOperationLogging.setUserId(userId);
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
-            fileOperationLogging.setFinishTime(simpleDateFormat.format(new Date()));
-            fileOperationLogging.setOperName("删除档案归档数据");
-            fileOperationLogging.setOperType(1);
-            fileOperationLoggingMapper.insert(fileOperationLogging);
-            flag=true;
-            return flag;
+        boolean flag = false;
+        currentInstrumentsMapper.deleteById(id);
+        //添加日志
+        FileOperationLogging fileOperationLogging = new FileOperationLogging();
+        fileOperationLogging.setFileId(id);
+        fileOperationLogging.setUserId(userId);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+        fileOperationLogging.setFinishTime(simpleDateFormat.format(new Date()));
+        fileOperationLogging.setOperName("删除档案归档数据");
+        fileOperationLogging.setOperType(1);
+        fileOperationLoggingMapper.insert(fileOperationLogging);
+        flag = true;
+        return flag;
 
 
     }
+
+    /**
+     * 审核归档数据并保存日志
+     * @param id
+     * @param auditStatus
+     * @param auditMind
+     * @param userId
+     * @return
+     */
 
     @Override
     @Transactional
     public boolean updateExamine(String id, Integer auditStatus, String auditMind, String userId) {
-           boolean flag=false;
-            CurrentInstrument currentInstrument = new CurrentInstrument();
-            currentInstrument.setId(id);
-            currentInstrument.setAuditStatus(auditStatus);
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            currentInstrument.setAuditTime(simpleDateFormat.format(new Date()));
-            currentInstrumentsMapper.updateById(currentInstrument);
-            FileOperationLogging fileOperationLogging = new FileOperationLogging();
-            fileOperationLogging.setFileId(id);
-            fileOperationLogging.setUserId(userId);
-            fileOperationLogging.setFinishTime(simpleDateFormat.format(new Date()));
-            if (auditStatus != null && auditStatus == 1) {
-                fileOperationLogging.setOperName("档案归档数据审核通过");
-            }
-            if (auditStatus != null && auditStatus == 2) {
-                fileOperationLogging.setOperName("档案归档数据审核不通过");
-                fileOperationLogging.setOperDesc(auditMind);
-            }
-            fileOperationLogging.setOperType(1);
-            fileOperationLoggingMapper.insert(fileOperationLogging);
-            flag=true;
-            return flag;
+        boolean flag = false;
+        CurrentInstrument currentInstrument = new CurrentInstrument();
+        currentInstrument.setId(id);
+        currentInstrument.setAuditStatus(auditStatus);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        currentInstrument.setAuditTime(simpleDateFormat.format(new Date()));
+        currentInstrumentsMapper.updateById(currentInstrument);
+        //保存日志
+        FileOperationLogging fileOperationLogging = new FileOperationLogging();
+        fileOperationLogging.setFileId(id);
+        fileOperationLogging.setUserId(userId);
+        fileOperationLogging.setFinishTime(simpleDateFormat.format(new Date()));
+        if (auditStatus != null && auditStatus == 1) {
+            fileOperationLogging.setOperName("档案归档数据审核通过");
+        }
+        if (auditStatus != null && auditStatus == 2) {
+            fileOperationLogging.setOperName("档案归档数据审核不通过");
+            fileOperationLogging.setOperDesc(auditMind);
+        }
+        fileOperationLogging.setOperType(1);  //归档
+        fileOperationLoggingMapper.insert(fileOperationLogging);
+        flag = true;
+        return flag;
 
 
     }
+
+    /**
+     * 档案归档，并保存日志
+     * @param id
+     * @param documentClassLevel
+     * @param userId
+     * @return
+     */
 
     @Override
     @Transactional
     public boolean updateIsFile(String id, String documentClassLevel, String userId) {
-           boolean result=false;
-            CurrentInstrument currentInstrument = new CurrentInstrument();
-            currentInstrument.setId(id);
-            currentInstrument.setDocumentClassLevel(documentClassLevel);
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            currentInstrument.setUpdateTime(simpleDateFormat.format(new Date()));
-            CurrentInstrument byId = currentInstrumentsMapper.selectById(id);
-            currentInstrument.setVersion(byId.getVersion());
-            currentInstrument.setAuditStatus(3);
-            int flag = currentInstrumentsMapper.updateById(currentInstrument);
-            //添加档案归档日志
-            FileOperationLogging fileOperationLogging = new FileOperationLogging();
-            fileOperationLogging.setFileId(id);
-            fileOperationLogging.setUserId(userId);
-            fileOperationLogging.setFinishTime(simpleDateFormat.format(new Date()));
-            if (flag != 0) {
-                fileOperationLogging.setOperName("档案数据归档成功");
-            } else {
-                fileOperationLogging.setOperName("档案数据归档失败");
-            }
-            fileOperationLogging.setOperType(1);
-            fileOperationLoggingMapper.insert(fileOperationLogging);
-             result=true;
-            return result;
+        boolean result = false;
+        CurrentInstrument currentInstrument = new CurrentInstrument();
+        currentInstrument.setId(id);
+        currentInstrument.setDocumentClassLevel(documentClassLevel);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        currentInstrument.setUpdateTime(simpleDateFormat.format(new Date()));
+        CurrentInstrument byId = currentInstrumentsMapper.selectById(id);
+        currentInstrument.setVersion(byId.getVersion());
+        currentInstrument.setAuditStatus(3);
+        int flag = currentInstrumentsMapper.updateById(currentInstrument);
+        //添加档案归档日志
+        FileOperationLogging fileOperationLogging = new FileOperationLogging();
+        fileOperationLogging.setFileId(id);
+        fileOperationLogging.setUserId(userId);
+        fileOperationLogging.setFinishTime(simpleDateFormat.format(new Date()));
+        if (flag != 0) {
+            fileOperationLogging.setOperName("档案数据归档成功");
+        } else {
+            fileOperationLogging.setOperName("档案数据归档失败");
+        }
+        fileOperationLogging.setOperType(1);
+        fileOperationLoggingMapper.insert(fileOperationLogging);
+        result = true;
+        return result;
 
     }
 
 
-
+    /**
+     * 查询今天的归档、已过期的查档数据
+     * @param userId
+     * @return
+     */
 
     @Override
     public Map<String, Object> getAllListByDay(String userId) {
         User user = userMapper.selectById(userId);
         List<CurrentInstrument> currentInstruments = null;
-        List<UserFile> userFiles=null;
-        Map<String,Object> map=new HashMap<>();
+        List<UserFile> userFiles = null;
+        Map<String, Object> map = new HashMap<>();
         if (user.getLevel() != null && user.getLevel() == 0) {     //档案处管理员
             currentInstruments = currentInstrumentsMapper.getListByAdminByDay();   //档案归档数据
-             userFiles = userFileMapper.getUserFileByAdminByDay();
+            userFiles = userFileMapper.getUserFileByAdminByDay();
         } else if (user.getLevel() != null && user.getLevel() == 1) {   //各处室管理员
 
         } else {     //普通用户
-            currentInstruments=currentInstrumentsMapper.getListByUserByDay(userId);
-            userFiles= userFileMapper.getUserFileByUserByDay(userId);
+            currentInstruments = currentInstrumentsMapper.getListByUserByDay(userId);
+            userFiles = userFileMapper.getUserFileByUserByDay(userId);
 
         }
-         map.put("currentInstruments",currentInstruments);
-         map.put("userFiles",userFiles);
+        map.put("currentInstruments", currentInstruments);
+        map.put("userFiles", userFiles);
 
-         return map;
+        return map;
     }
 
+    /**
+     * 查询所有归档、查档数据
+     * @param userId
+     * @param page
+     * @param size
+     * @param applyUser
+     * @param applyType
+     * @return
+     */
     @Override
-    public  Map<String, Object>  getAllList(String userId,Long page, Long size, String applyUser,Integer applyType) {
+    public Map<String, Object> getAllList(String userId, Long page, Long size, String applyUser, Integer applyType) {
         User user = userMapper.selectById(userId);
-        Page<CurrentInstrument>  pages=new Page<>(page,size);
-        Page<UserFile>  upages=new Page<>(page,size);
-        String documentClassLevel=null;
-        String auditStatus=null;
-        Page<CurrentInstrument>  currentInstrumentPage=null;
-        IPage<UserFile> userFile=null;
-        Map<String,Object>  map=new HashMap<>();
-        if(applyType!=null &&  applyType==1){    //归档数据
+        Page<CurrentInstrument> pages = new Page<>(page, size);
+        Page<UserFile> upages = new Page<>(page, size);
+        Page<CurrentInstrument> currentInstrumentPage = null;
+        IPage<UserFile> userFile = null;
+        Map<String, Object> map = new HashMap<>();
+        if (applyType != null && applyType == 1) {    //归档数据
             if (user.getLevel() != null && user.getLevel() == 0) {   //管理员
-                currentInstrumentPage = currentInstrumentsMapper.getAllListOfPageByAdmin(pages, documentClassLevel,applyUser,null);
+                currentInstrumentPage = currentInstrumentsMapper.getAllListOfPageByAdmin(pages, null, applyUser, null);
 
-            }else if (user.getLevel() != null && user.getLevel() == 1) {   //各处室管理员
+            } else if (user.getLevel() != null && user.getLevel() == 1) {   //各处室管理员
 
-            }else{      //普通用户
-                currentInstrumentPage = currentInstrumentsMapper.getAllListOfPageByUser(pages, userId, documentClassLevel, applyUser, auditStatus);
+            } else {      //普通用户
+                currentInstrumentPage = currentInstrumentsMapper.getAllListOfPageByUser(pages, userId, null, applyUser, null);
             }
-             map.put("resultList",currentInstrumentPage);
-            }else if(applyType!=null &&  applyType==2){    //查档数据
-
+            map.put("resultList", currentInstrumentPage);
+        }
+        if (applyType != null && applyType == 2) {    //查档数据
             if (user.getLevel() != null && user.getLevel() == 0) {   //管理员
-                try{
-                    userFile = userFileMapper.getUserFileOfPageByAdmin(upages,applyUser);
-                }catch (Exception  e){
-                    e.printStackTrace();
-                }
+                    userFile = userFileMapper.getUserFileOfPageByAdmin(upages, applyUser);
 
+            } else if (user.getLevel() != null && user.getLevel() == 1) {   //各处室管理员
 
-            }else if (user.getLevel() != null && user.getLevel() == 1) {   //各处室管理员
-
-            }else{      //普通用户
-                userFile= userFileMapper.getUserFileListByUserOfPage(upages,null);
+            } else {      //普通用户
+                userFile = userFileMapper.getUserFileListByUserOfPage(upages, userId);
             }
-            map.put("resultList",userFile);
+            map.put("resultList", userFile);
 
-        }else{        //归档数据+查档数据
-            if (user.getLevel() != null && user.getLevel() == 0) {   //管理员
-                currentInstrumentPage = currentInstrumentsMapper.getAllListOfPageByAdmin(pages, documentClassLevel,applyUser,null);
-                userFile = userFileMapper.getUserFileOfPageByAdmin(upages,applyUser);
-
-            }else if (user.getLevel() != null && user.getLevel() == 1) {   //各处室管理员
-
-            }else{      //普通用户
-                userFile= userFileMapper.getUserFileListByUserOfPage(upages,null);
-                currentInstrumentPage = currentInstrumentsMapper.getAllListOfPageByUser(pages, userId, documentClassLevel, applyUser, auditStatus);
-            }
-            map.put("userFile",userFile);
-            map.put("currentInstrument",currentInstrumentPage);
         }
         return map;
     }

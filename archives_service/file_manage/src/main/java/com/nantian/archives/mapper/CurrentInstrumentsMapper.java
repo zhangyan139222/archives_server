@@ -21,24 +21,16 @@ public interface CurrentInstrumentsMapper  extends BaseMapper<CurrentInstrument>
     List<CurrentInstrument>   getLeftTreeThirdNode();
 
 
-
     List<CurrentInstrument> getAllListByUser(
-                                                           @Param("uesrId") String uesrId, @Param("documentClassLevel") String documentClassLevel,
-                                                          /* @Param("title") String title, @Param("responsiblePerson") String responsiblePerson,
-                                                           @Param("timeYear") String timeYear, @Param("archivalCode") String archivalCode,
-                                                           @Param("storagePeriod") String storagePeriod, @Param("boxNumber") String boxNumber,*/
-                                                           @Param("auditStatus") String auditStatus);
-
+            @Param("uesrId") String uesrId, @Param("documentClassLevel") String documentClassLevel,
+            @Param("auditStatus") String auditStatus);
 
 
     Page<CurrentInstrument> getAllListOfPageByUser(IPage<CurrentInstrument> pages,
-                                                           @Param("uesrId") String uesrId,
-                                                           @Param("documentClassLevel") String documentClassLevel,
-                                                          /* @Param("title") String title, @Param("responsiblePerson") String responsiblePerson,
-                                                           @Param("timeYear") String timeYear, @Param("archivalCode") String archivalCode,
-                                                           @Param("storagePeriod") String storagePeriod, @Param("boxNumber") String boxNumber,*/
-                                                           @Param("applyUser") String  applyUser,
-                                                           @Param("auditStatus") String auditStatus);
+                                                   @Param("uesrId") String uesrId,
+                                                   @Param("documentClassLevel") String documentClassLevel,
+                                                   @Param("applyUser") String applyUser,
+                                                   @Param("auditStatus") String auditStatus);
 
 
     Page<CurrentInstrument> getPermissionFile(IPage<CurrentInstrument> pages,
@@ -46,12 +38,10 @@ public interface CurrentInstrumentsMapper  extends BaseMapper<CurrentInstrument>
                                               @Param("id") String id);
 
 
-
-
-    Page<CurrentInstrument>  getAllListOfPageByAdmin( @Param("pages")IPage<CurrentInstrument> pages,
-                                                     @Param("documentClassLevel") String documentClassLevel,
-                                                     @Param("applyUser") String applyUser,
-                                                      @Param("auditStatus") String auditStatus);
+    Page<CurrentInstrument> getAllListOfPageByAdmin(@Param("pages") IPage<CurrentInstrument> pages,
+                                                    @Param("documentClassLevel") String documentClassLevel,
+                                                    @Param("applyUser") String applyUser,
+                                                    @Param("auditStatus") String auditStatus);
 
     List<CurrentInstrument>  getAllListByAdmin(@Param("documentClassLevel") String documentClassLevel);
 

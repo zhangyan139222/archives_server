@@ -21,12 +21,11 @@ import java.net.UnknownHostException;
 import java.util.HashMap;
 
 @RestController
-//@RequestMapping("/file")
-@Api(value="/file" ,tags = {"附件管理"})
+@RequestMapping("file")
+@Api(tags = {"附件管理"})
 public class FileController {
     @Resource
     private FileService   fileService;
-
     @Resource
     private CurrentInstrumentsService currentInstrumentsService;
 
@@ -48,40 +47,31 @@ public class FileController {
 
     @ApiOperation("文件上传")
     @PostMapping("/uploadFile")
-    public R uploadFile(@ApiParam(value="上传附件")  MultipartFile file, HttpServletRequest  request) {
-        String  fileUrl= null;
-        HashMap<String, Object> map=null;
+    public R uploadFile(@ApiParam(value = "上传附件") MultipartFile file, HttpServletRequest request) {
+        HashMap<String, Object> map = null;
         try {
-             map = fileService.fileUpload(file, request);
+            map = fileService.fileUpload(file, request);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        /*if(fileUrl.equals("文件上传失败")){
-            return R.error("文件上传失败");
-        }else if(fileUrl.equals("请选择上传的文件")){
-            return R.error("请选择上传的文件");
-        }else{
-            return  R.ok("文件上传成功").data("url",fileUrl);
-        }*/
-        String message= (String) map.get("message");
-        return  R.ok(message).data(map);
+        String message = (String) map.get("message");
+        return R.ok(message).data(map);
 
     }
 
     @GetMapping("/downloadFile/{id}")
     @ApiOperation("文件下载")
-    public void downloadFile( @ApiParam(value="通过Id获取文件URL",required = true)  @PathVariable String id,HttpServletRequest  request,
-                              HttpServletResponse  response) {
-            fileService.downloadFile(id,request,response);
+    public void downloadFile(@ApiParam(value = "通过Id获取文件URL", required = true) @PathVariable String id, HttpServletRequest request,
+                             HttpServletResponse response) {
+        fileService.downloadFile(id, request, response);
     }
 
 
     @ApiOperation("文件删除")
     @PostMapping("deleteFile/{id}")
-    public   R  deleteFile(@ApiParam(value="档案附件ID") @PathVariable String id){
-//          return   fileService.deleteFile(fileId)? R.ok("文件删除成功"):R.error("文件删除失败");
+    public R deleteFile(@ApiParam(value = "档案附件ID") @PathVariable String id) {
         int result = fileService.deleteFile(id);
-        return  result==0? R.ok("文件删除失败"):R.error("文件删除成功");
+        return result == 0 ? R.ok("文件删除失败") : R.error("文件删除成功");
     }
 
 
@@ -96,18 +86,17 @@ public class FileController {
     }
 
 
-
     @ApiOperation("获取文件地址")
     @GetMapping("/getFileUrl/{fileId}")
-     public  R getFileUrl(@ApiParam(value="通过Id获取文件URL") @PathVariable String fileId){
-        try{
+    public R getFileUrl(@ApiParam(value = "通过Id获取文件URL") @PathVariable String fileId) {
+        try {
             CurrentInstrument byId = currentInstrumentsService.getById(fileId);
-            String  fileUrl=byId.getStorageAddress();
-            return   R.ok("获取文件地址成功").data("fileUrl",fileUrl);
-        }catch (Exception  e){
-            return   R.error("获取文件地址失败");
+            String fileUrl = byId.getStorageAddress();
+            return R.ok("获取文件地址成功").data("fileUrl", fileUrl);
+        } catch (Exception e) {
+            return R.error("获取文件地址失败");
         }
 
-     }
+    }
 
 }

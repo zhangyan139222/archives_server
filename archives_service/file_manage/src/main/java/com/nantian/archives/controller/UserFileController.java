@@ -33,28 +33,22 @@ import java.util.Map;
  */
 @RestController
 @Api(tags ={"数据申请"})
-@RequestMapping("/userFile")
+@RequestMapping("userFile")
 public class UserFileController {
+
     @Resource
     private UserFileService  userFileService;
-    @Resource
-    private UserFilePermissionService userFilePermissionService;
 
-    @Resource
-    private WorkFlowService workFlowService;
-    @Resource
-    private UserService  userService;
-
-    @ApiOperation(value="根据用户查询所有数据")
+    @ApiOperation(value = "根据用户查询所有数据")
     @GetMapping("/getAllListByUser")
-    public R getUserFileListByUser(@ApiParam(value="组合查询数据参数",required = false) UserFile userFile,
-                                             @ApiParam(value="当前页码",required = false)   Integer page,
-                                             @ApiParam(value="每页记录数",required = false)   Integer  size,
-                                             @ApiParam(value="用户名",required = true)  String userId ) {
+    public R getUserFileListByUser(@ApiParam(value = "组合查询数据参数", required = false) UserFile userFile,
+                                   @ApiParam(value = "当前页码", required = false) Integer page,
+                                   @ApiParam(value = "每页记录数", required = false) Integer size,
+                                   @ApiParam(value = "用户名", required = true) String userId) {
         try {
 
             Map<String, Object> userFileListByUser = userFileService.getUserFileListByUser(userId, userFile, page, size);
-            return   R.ok("获取数据列表成功").data(userFileListByUser);
+            return R.ok("获取数据列表成功").data(userFileListByUser);
         } catch (Exception e) {
             return R.error("获取数据列表失败");
         }
@@ -63,53 +57,55 @@ public class UserFileController {
 
     /**
      * 数据新增
+     *
      * @param userFile
      * @return
      */
-    @ApiOperation(value="新增档案查阅申请")
+    @ApiOperation(value = "新增档案查阅申请")
     @PostMapping("/saveUserFile")
-    public R  saveUserFile(@RequestBody  @Validated({Insert.class}) UserFile  userFile){
-       return  userFileService.saveUserFile(userFile)? R.ok("档案查阅申请新增成功"):R.error("档案查阅申请新增失败");
+    public R saveUserFile(@RequestBody @Validated({Insert.class}) UserFile userFile) {
+        return userFileService.saveUserFile(userFile) ? R.ok("档案查阅申请新增成功") : R.error("档案查阅申请新增失败");
 
     }
 
 
-
     /**
      * 数据更新
+     *
      * @param userFile
      * @return
      */
-    @ApiOperation(value="修改档案查阅申请")
+    @ApiOperation(value = "修改档案查阅申请")
     @PostMapping("/update")
-    public R  updateUserFile(@RequestBody    @Validated({Update.class})  UserFile  userFile){
+    public R updateUserFile(@RequestBody @Validated({Update.class}) UserFile userFile) {
 
-        return userFileService.updateUserFile(userFile)? R.ok("数据更新成功"):R.error("数据更新失败");
+        return userFileService.updateUserFile(userFile) ? R.ok("数据更新成功") : R.error("数据更新失败");
 
     }
 
     /**
      * 数据审核
+     *
      * @param id
      * @param auditStatus
      * @return
      */
-    @ApiOperation(value="档案查阅申请审核")
+    @ApiOperation(value = "档案查阅申请审核")
     @PostMapping("/examineUserFile")
-    public R  examineUserFile(@ApiParam(value = "id",required = true) String id,
-                              @ApiParam(value = "审核状态",required = true)Integer auditStatus,
-                              @ApiParam(value = "驳回理由",required = false)String  auditMind,
-                              @ApiParam(value = "用户ID",required = false)String  userId){
+    public R examineUserFile(@ApiParam(value = "id", required = true) String id,
+                             @ApiParam(value = "审核状态", required = true) Integer auditStatus,
+                             @ApiParam(value = "驳回理由", required = false) String auditMind,
+                             @ApiParam(value = "用户ID", required = false) String userId) {
 
 
-        return userFileService.examineUserFile(id,auditStatus,auditMind,userId)? R.ok("档案查阅申请成功"):R.error("档案查阅申请失败");
+        return userFileService.examineUserFile(id, auditStatus, auditMind, userId) ? R.ok("档案查阅申请成功") : R.error("档案查阅申请失败");
 
     }
 
-    @ApiOperation(value="档案查阅申请删除")
+    @ApiOperation(value = "档案查阅申请删除")
     @PostMapping("/deleteUserFile/{id}")
-    public   R   deleteUserFile(@ApiParam(value = "档案查阅申请ID",required = true)  @PathVariable String id){
-       return   userFileService.removeById(id)?  R.ok("档案查阅申请删除成功"):R.error("档案查阅申请删除失败");
+    public R deleteUserFile(@ApiParam(value = "档案查阅申请ID", required = true) @PathVariable String id) {
+        return userFileService.removeById(id) ? R.ok("档案查阅申请删除成功") : R.error("档案查阅申请删除失败");
     }
 
 

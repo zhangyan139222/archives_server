@@ -27,15 +27,15 @@ public class FileAttachmentController {
     @Resource
     private FileAttachmentService   fileAttachmentService;
 
-    @ApiOperation(value="查询所有的附件")
+    @ApiOperation(value = "查询所有的附件")
     @GetMapping("/getFileList/{archivesId}")
-    public R getFileAttachmentList(@ApiParam(value="档案ID",required = true) @PathVariable String archivesId){
+    public R getFileAttachmentList(@ApiParam(value = "档案ID", required = true) @PathVariable String archivesId) {
         try {
             List<FileAttachment> fileAttachmentList = fileAttachmentService.getFileAttachmentList(archivesId);
-          return   R.ok("成功获取所有的附件").data("fileAttachmentList",fileAttachmentList);
-        }catch (Exception  e){
+            return R.ok("成功获取所有的附件").data("fileAttachmentList", fileAttachmentList);
+        } catch (Exception e) {
             e.printStackTrace();
-            return   R.error("获取附件失败");
+            return R.error("获取附件失败");
 
         }
     }

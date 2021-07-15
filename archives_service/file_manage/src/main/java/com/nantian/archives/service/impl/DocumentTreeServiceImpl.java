@@ -23,8 +23,7 @@ public class DocumentTreeServiceImpl extends ServiceImpl<DocumentTreeMapper, Doc
 
     @Resource
     private DocumentTreeMapper documentTreeMapper;
-    @Resource
-    private CurrentInstrumentsMapper currentInstrumentsMapper;
+
     /**
      * 获取左侧的数据分类树
      * @return

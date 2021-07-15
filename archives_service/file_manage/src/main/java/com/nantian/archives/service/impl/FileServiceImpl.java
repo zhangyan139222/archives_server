@@ -88,73 +88,79 @@ public class FileServiceImpl   extends ServiceImpl<FileMapper, CurrentInstrument
             return  "请选择上传的文件";
         }
     }*/
+
+    /**
+     * 文件上传
+     * @param multipartFile
+     * @param request
+     * @return
+     */
+
     @Override
-    public HashMap<String,Object> fileUpload(MultipartFile multipartFile, HttpServletRequest request) {
-        HashMap<String,Object>  map=new HashMap<>();
-        if(multipartFile!=null){
+    public HashMap<String, Object> fileUpload(MultipartFile multipartFile, HttpServletRequest request) {
+        HashMap<String, Object> map = new HashMap<>();
+        if (multipartFile != null) {
             //项目根目录的绝对路径
-            String realPath = fileConfig.multipartConfigElement().getLocation() ;
+            String realPath = fileConfig.multipartConfigElement().getLocation();
             //存放上传文件的文件夹
-            File file =new File(realPath);
-            if(!file.isDirectory()){
+            File file = new File(realPath);
+            if (!file.isDirectory()) {
                 file.mkdirs();
             }
-                //获取原始文件的名称
-                String oldName=multipartFile.getOriginalFilename();
-                //获取新的文件名 (原文件名+时间戳+文件类型)
-                SimpleDateFormat  simpleDateFormat=new SimpleDateFormat("yyyyMMddHHmmss");
-                String  newName=oldName.substring(0,oldName.lastIndexOf("."))+simpleDateFormat.format(new Date())+
-                        oldName.substring(oldName.lastIndexOf("."));
+            //获取原始文件的名称
+            String oldName = multipartFile.getOriginalFilename();
+            //获取新的文件名 (原文件名+时间戳+文件类型)
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+            String newName = oldName.substring(0, oldName.lastIndexOf(".")) + simpleDateFormat.format(new Date()) +
+                    oldName.substring(oldName.lastIndexOf("."));
             try {
                 //构建真实的文件路径
                 File newFile = new File(file.getAbsolutePath() + File.separator + newName);
                 //转存文件到指定路径，如果文件名重复，将会覆盖掉之前的文件,文件上传到绝对路径
                 multipartFile.transferTo(newFile);
-                String Path = realPath  + newName;
-//                String fileName = "/resources/upload/";
-//                String filePath = fileName + newName;
-                String  filePath=virtualPath+newName;
+                String Path = realPath + newName;
+                String filePath = virtualPath + newName;
                 map.put("attachamentTitle", oldName);
                 map.put("fileUrl", Path);
                 map.put("storageAddress", filePath);
                 map.put("message", "文件上传成功");
-//                    return   filePath;
             } catch (Exception e) {
                 map.put("message", "文件上传失败");
                 e.printStackTrace();
             }
 
-//            return "文件上传失败";
-        }else{
-            map.put("message","请选择上传的文件");
-//            return  "请选择上传的文件";
+        } else {
+            map.put("message", "请选择上传的文件");
         }
-        return  map;
+        return map;
     }
 
 
-
+    /**
+     * 文件下载
+     *
+     * @param id
+     * @param request
+     * @param response
+     */
     @Override
-    public void downloadFile(String id,HttpServletRequest  request, HttpServletResponse response) {
-//        CurrentInstrument currentInstrument = fileMapper.selectById(fileId);
-//        //获取文件地址
-//        String filePath=currentInstrument.getFileUrl();
+    public void downloadFile(String id, HttpServletRequest request, HttpServletResponse response) {
         FileAttachment fileAttachment = fileAttachmentMapper.selectById(id);
-        String filePath=fileAttachment.getFileUrl();
+        String filePath = fileAttachment.getFileUrl();
         //文件名称
-        String fileName=fileAttachment.getAttachamentTitle();
-        if(StringUtils.isNotEmpty(filePath)) {
-                try{
-                    response.setCharacterEncoding("utf-8");
-                    response.setContentType("multipart/form-data");
-                    response.setHeader("Content-Disposition",
-                            "attachment;fileName=" + FileUtils.setFileDownloadHeader(request, fileName));
-                    FileUtils.writeBytes(filePath, response.getOutputStream());
-                }catch (Exception  e){
-                    e.printStackTrace();
-                }
+        String fileName = fileAttachment.getAttachamentTitle();
+        if (StringUtils.isNotEmpty(filePath)) {
+            try {
+                response.setCharacterEncoding("utf-8");
+                response.setContentType("multipart/form-data");
+                response.setHeader("Content-Disposition",
+                        "attachment;fileName=" + FileUtils.setFileDownloadHeader(request, fileName));
+                FileUtils.writeBytes(filePath, response.getOutputStream());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-        }else{
+        } else {
             log.error("文件路径不能为空");
         }
 
